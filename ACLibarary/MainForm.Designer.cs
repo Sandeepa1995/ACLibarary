@@ -32,19 +32,21 @@
             this.menuMain = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addNewStudentToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.addNewBookToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.changeUserPasswordToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.btnCloseMain = new System.Windows.Forms.Button();
             this.btnMinimizeMain = new System.Windows.Forms.Button();
-            this.addNewBookToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.changeUserPasswordToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.dgvBooks = new System.Windows.Forms.DataGridView();
+            this.refCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.title = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.type = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.author = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.holder = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.rbChem = new System.Windows.Forms.RadioButton();
-            this.rbMath = new System.Windows.Forms.RadioButton();
-            this.rbPhy = new System.Windows.Forms.RadioButton();
             this.button1 = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.txtBookCode = new System.Windows.Forms.TextBox();
@@ -63,11 +65,10 @@
             this.label5 = new System.Windows.Forms.Label();
             this.textBox5 = new System.Windows.Forms.TextBox();
             this.button3 = new System.Windows.Forms.Button();
-            this.refCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.title = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.type = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.author = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.holder = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.chkMath = new System.Windows.Forms.CheckBox();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.chkChem = new System.Windows.Forms.CheckBox();
+            this.chkPhysics = new System.Windows.Forms.CheckBox();
             this.menuMain.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -108,6 +109,12 @@
             this.addNewStudentToolStripMenuItem.Text = "Add New Student";
             this.addNewStudentToolStripMenuItem.Click += new System.EventHandler(this.addNewStudentToolStripMenuItem_Click);
             // 
+            // addNewBookToolStripMenuItem
+            // 
+            this.addNewBookToolStripMenuItem.Name = "addNewBookToolStripMenuItem";
+            this.addNewBookToolStripMenuItem.Size = new System.Drawing.Size(201, 26);
+            this.addNewBookToolStripMenuItem.Text = "Add New Book";
+            // 
             // editToolStripMenuItem
             // 
             this.editToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -116,6 +123,12 @@
             this.editToolStripMenuItem.Size = new System.Drawing.Size(74, 24);
             this.editToolStripMenuItem.Text = "Settings";
             this.editToolStripMenuItem.Click += new System.EventHandler(this.editToolStripMenuItem_Click);
+            // 
+            // changeUserPasswordToolStripMenuItem
+            // 
+            this.changeUserPasswordToolStripMenuItem.Name = "changeUserPasswordToolStripMenuItem";
+            this.changeUserPasswordToolStripMenuItem.Size = new System.Drawing.Size(233, 26);
+            this.changeUserPasswordToolStripMenuItem.Text = "Change User Password";
             // 
             // btnCloseMain
             // 
@@ -142,18 +155,6 @@
             this.btnMinimizeMain.Text = "_";
             this.btnMinimizeMain.UseVisualStyleBackColor = true;
             this.btnMinimizeMain.Click += new System.EventHandler(this.btnMinimizeMain_Click);
-            // 
-            // addNewBookToolStripMenuItem
-            // 
-            this.addNewBookToolStripMenuItem.Name = "addNewBookToolStripMenuItem";
-            this.addNewBookToolStripMenuItem.Size = new System.Drawing.Size(201, 26);
-            this.addNewBookToolStripMenuItem.Text = "Add New Book";
-            // 
-            // changeUserPasswordToolStripMenuItem
-            // 
-            this.changeUserPasswordToolStripMenuItem.Name = "changeUserPasswordToolStripMenuItem";
-            this.changeUserPasswordToolStripMenuItem.Size = new System.Drawing.Size(233, 26);
-            this.changeUserPasswordToolStripMenuItem.Text = "Change User Password";
             // 
             // tabControl1
             // 
@@ -209,6 +210,36 @@
             this.dgvBooks.Size = new System.Drawing.Size(893, 320);
             this.dgvBooks.TabIndex = 4;
             // 
+            // refCode
+            // 
+            this.refCode.HeaderText = "Reference Code";
+            this.refCode.Name = "refCode";
+            this.refCode.ReadOnly = true;
+            // 
+            // title
+            // 
+            this.title.HeaderText = "Title";
+            this.title.Name = "title";
+            this.title.ReadOnly = true;
+            // 
+            // type
+            // 
+            this.type.HeaderText = "Type";
+            this.type.Name = "type";
+            this.type.ReadOnly = true;
+            // 
+            // author
+            // 
+            this.author.HeaderText = "Author";
+            this.author.Name = "author";
+            this.author.ReadOnly = true;
+            // 
+            // holder
+            // 
+            this.holder.HeaderText = "Holder";
+            this.holder.Name = "holder";
+            this.holder.ReadOnly = true;
+            // 
             // groupBox1
             // 
             this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -233,9 +264,9 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.rbChem);
-            this.groupBox2.Controls.Add(this.rbMath);
-            this.groupBox2.Controls.Add(this.rbPhy);
+            this.groupBox2.Controls.Add(this.chkChem);
+            this.groupBox2.Controls.Add(this.chkPhysics);
+            this.groupBox2.Controls.Add(this.chkMath);
             this.groupBox2.Location = new System.Drawing.Point(471, 12);
             this.groupBox2.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox2.Name = "groupBox2";
@@ -243,43 +274,6 @@
             this.groupBox2.Size = new System.Drawing.Size(261, 43);
             this.groupBox2.TabIndex = 11;
             this.groupBox2.TabStop = false;
-            // 
-            // rbChem
-            // 
-            this.rbChem.AutoSize = true;
-            this.rbChem.Location = new System.Drawing.Point(81, 15);
-            this.rbChem.Margin = new System.Windows.Forms.Padding(4);
-            this.rbChem.Name = "rbChem";
-            this.rbChem.Size = new System.Drawing.Size(91, 21);
-            this.rbChem.TabIndex = 5;
-            this.rbChem.TabStop = true;
-            this.rbChem.Text = "Chemistry";
-            this.rbChem.UseVisualStyleBackColor = true;
-            // 
-            // rbMath
-            // 
-            this.rbMath.AutoSize = true;
-            this.rbMath.Checked = true;
-            this.rbMath.Location = new System.Drawing.Point(8, 15);
-            this.rbMath.Margin = new System.Windows.Forms.Padding(4);
-            this.rbMath.Name = "rbMath";
-            this.rbMath.Size = new System.Drawing.Size(60, 21);
-            this.rbMath.TabIndex = 4;
-            this.rbMath.TabStop = true;
-            this.rbMath.Text = "Math";
-            this.rbMath.UseVisualStyleBackColor = true;
-            // 
-            // rbPhy
-            // 
-            this.rbPhy.AutoSize = true;
-            this.rbPhy.Location = new System.Drawing.Point(179, 15);
-            this.rbPhy.Margin = new System.Windows.Forms.Padding(4);
-            this.rbPhy.Name = "rbPhy";
-            this.rbPhy.Size = new System.Drawing.Size(77, 21);
-            this.rbPhy.TabIndex = 7;
-            this.rbPhy.TabStop = true;
-            this.rbPhy.Text = "Physics";
-            this.rbPhy.UseVisualStyleBackColor = true;
             // 
             // button1
             // 
@@ -294,7 +288,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(472, 75);
+            this.label3.Location = new System.Drawing.Point(472, 74);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(67, 17);
@@ -303,11 +297,12 @@
             // 
             // txtBookCode
             // 
-            this.txtBookCode.Location = new System.Drawing.Point(548, 75);
+            this.txtBookCode.Location = new System.Drawing.Point(547, 72);
             this.txtBookCode.Margin = new System.Windows.Forms.Padding(4);
             this.txtBookCode.Name = "txtBookCode";
             this.txtBookCode.Size = new System.Drawing.Size(179, 22);
             this.txtBookCode.TabIndex = 8;
+            this.txtBookCode.TextChanged += new System.EventHandler(this.txtBookCode_TextChanged);
             // 
             // label2
             // 
@@ -326,6 +321,7 @@
             this.txtBookAuth.Name = "txtBookAuth";
             this.txtBookAuth.Size = new System.Drawing.Size(385, 22);
             this.txtBookAuth.TabIndex = 2;
+            this.txtBookAuth.TextChanged += new System.EventHandler(this.txtBookAuth_TextChanged);
             // 
             // label1
             // 
@@ -344,6 +340,7 @@
             this.txtBookTitle.Name = "txtBookTitle";
             this.txtBookTitle.Size = new System.Drawing.Size(385, 22);
             this.txtBookTitle.TabIndex = 1;
+            this.txtBookTitle.TextChanged += new System.EventHandler(this.txtBookTitle_TextChanged);
             // 
             // tabPage2
             // 
@@ -473,41 +470,61 @@
             this.button3.TabIndex = 4;
             this.button3.UseVisualStyleBackColor = true;
             // 
-            // refCode
+            // chkMath
             // 
-            this.refCode.HeaderText = "Reference Code";
-            this.refCode.Name = "refCode";
-            this.refCode.ReadOnly = true;
+            this.chkMath.AutoSize = true;
+            this.chkMath.Checked = true;
+            this.chkMath.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkMath.Location = new System.Drawing.Point(7, 15);
+            this.chkMath.Name = "chkMath";
+            this.chkMath.Size = new System.Drawing.Size(61, 21);
+            this.chkMath.TabIndex = 5;
+            this.chkMath.Text = "Math";
+            this.chkMath.UseVisualStyleBackColor = true;
+            this.chkMath.CheckedChanged += new System.EventHandler(this.chkMath_CheckedChanged);
             // 
-            // title
+            // checkBox1
             // 
-            this.title.HeaderText = "Title";
-            this.title.Name = "title";
-            this.title.ReadOnly = true;
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Location = new System.Drawing.Point(-19, -19);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(98, 21);
+            this.checkBox1.TabIndex = 6;
+            this.checkBox1.Text = "checkBox1";
+            this.checkBox1.UseVisualStyleBackColor = true;
             // 
-            // type
+            // chkChem
             // 
-            this.type.HeaderText = "Type";
-            this.type.Name = "type";
-            this.type.ReadOnly = true;
+            this.chkChem.AutoSize = true;
+            this.chkChem.Checked = true;
+            this.chkChem.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkChem.Location = new System.Drawing.Point(158, 15);
+            this.chkChem.Name = "chkChem";
+            this.chkChem.Size = new System.Drawing.Size(92, 21);
+            this.chkChem.TabIndex = 7;
+            this.chkChem.Text = "Chemistry";
+            this.chkChem.UseVisualStyleBackColor = true;
+            this.chkChem.CheckedChanged += new System.EventHandler(this.chkChem_CheckedChanged);
             // 
-            // author
+            // chkPhysics
             // 
-            this.author.HeaderText = "Author";
-            this.author.Name = "author";
-            this.author.ReadOnly = true;
-            // 
-            // holder
-            // 
-            this.holder.HeaderText = "Holder";
-            this.holder.Name = "holder";
-            this.holder.ReadOnly = true;
+            this.chkPhysics.AutoSize = true;
+            this.chkPhysics.Checked = true;
+            this.chkPhysics.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkPhysics.Location = new System.Drawing.Point(74, 15);
+            this.chkPhysics.Name = "chkPhysics";
+            this.chkPhysics.Size = new System.Drawing.Size(78, 21);
+            this.chkPhysics.TabIndex = 5;
+            this.chkPhysics.Text = "Physics";
+            this.chkPhysics.UseVisualStyleBackColor = true;
+            this.chkPhysics.CheckedChanged += new System.EventHandler(this.chkPhysics_CheckedChanged);
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(952, 568);
+            this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.btnMinimizeMain);
@@ -553,9 +570,6 @@
         private System.Windows.Forms.DataGridView dgvBooks;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.RadioButton rbChem;
-        private System.Windows.Forms.RadioButton rbMath;
-        private System.Windows.Forms.RadioButton rbPhy;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txtBookCode;
@@ -579,5 +593,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn type;
         private System.Windows.Forms.DataGridViewTextBoxColumn author;
         private System.Windows.Forms.DataGridViewTextBoxColumn holder;
+        private System.Windows.Forms.CheckBox chkMath;
+        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.CheckBox chkChem;
+        private System.Windows.Forms.CheckBox chkPhysics;
     }
 }

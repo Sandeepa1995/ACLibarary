@@ -78,13 +78,57 @@ namespace ACLibarary
 
         }
 
-        private void toolStripStatusLabel1_Click(object sender, EventArgs e)
-        {
-
-        }
 
         Rectangle BottomLeft { get { return new Rectangle(0, this.ClientSize.Height - _, _, _); } }
+
+
         Rectangle BottomRight { get { return new Rectangle(this.ClientSize.Width - _, this.ClientSize.Height - _, _, _); } }
+
+        private void chkMath_CheckedChanged(object sender, EventArgs e)
+        {
+            loadSelectedType();
+        }
+
+        private void chkPhysics_CheckedChanged(object sender, EventArgs e)
+        {
+            loadSelectedType();
+        }
+
+        private void chkChem_CheckedChanged(object sender, EventArgs e)
+        {
+            loadSelectedType();
+        }
+
+        private void txtBookTitle_TextChanged(object sender, EventArgs e)
+        {
+            loadSelectedType();
+        }
+
+        private void txtBookAuth_TextChanged(object sender, EventArgs e)
+        {
+            loadSelectedType();
+        }
+
+        private async void txtBookCode_TextChanged(object sender, EventArgs e)
+        {
+            txtBookAuth.Text = "";
+            txtBookTitle.Text = "";
+            chkMath.Checked = true;
+            chkPhysics.Checked = true;
+            chkChem.Checked = true;
+            FirebaseResponse res = await _client.GetAsync("books/");
+            IDictionary<string, Book> bookList = res.ResultAs<IDictionary<string, Book>>();
+            dgvBooks.Rows.Clear();
+            dgvBooks.Refresh();
+
+            foreach (KeyValuePair<string, Book> bok in bookList)
+            {           
+                if (bok.Value.refCode.ToLower().Contains(txtBookCode.Text.ToLower()))
+                {
+                    this.dgvBooks.Rows.Add(bok.Value.refCode, bok.Value.title, bok.Value.type, bok.Value.author, bok.Value.holder);
+                }
+            }
+        }
 
         private const int WM_NCHITTEST = 0x84;
         private const int HT_CLIENT = 0x1;
@@ -128,6 +172,87 @@ namespace ACLibarary
             foreach (KeyValuePair<string, Book> bok in bookList) {
                 //MessageBox.Show(bok.Value.title);
                 this.dgvBooks.Rows.Add(bok.Value.refCode, bok.Value.title, bok.Value.type, bok.Value.author, bok.Value.holder);
+            }
+        }
+
+        public async void loadSelectedType() {
+            txtBookCode.Text = "";
+            FirebaseResponse res = await _client.GetAsync("books/");
+            IDictionary<string, Book> bookList = res.ResultAs<IDictionary<string, Book>>();
+            dgvBooks.Rows.Clear();
+            dgvBooks.Refresh();
+
+            foreach (KeyValuePair<string, Book> bok in bookList)
+            {
+                if ((txtBookAuth.Text.Trim() == "") && (txtBookTitle.Text.Trim() == ""))
+                {
+                    if ((bok.Value.type == "Math") && (this.chkMath.Checked))
+                    {
+                        this.dgvBooks.Rows.Add(bok.Value.refCode, bok.Value.title, bok.Value.type, bok.Value.author, bok.Value.holder);
+                    }
+                    else if ((bok.Value.type == "Physics") && (this.chkPhysics.Checked))
+                    {
+                        this.dgvBooks.Rows.Add(bok.Value.refCode, bok.Value.title, bok.Value.type, bok.Value.author, bok.Value.holder);
+                    }
+                    else if ((bok.Value.type == "Chemistry") && (this.chkChem.Checked))
+                    {
+                        this.dgvBooks.Rows.Add(bok.Value.refCode, bok.Value.title, bok.Value.type, bok.Value.author, bok.Value.holder);
+                    }
+                }
+                else if ((txtBookAuth.Text.Trim() == ""))
+                {
+                    if (bok.Value.title.ToLower().Contains(txtBookTitle.Text.ToLower()))
+                    {
+                        if ((bok.Value.type == "Math") && (this.chkMath.Checked))
+                        {
+                            this.dgvBooks.Rows.Add(bok.Value.refCode, bok.Value.title, bok.Value.type, bok.Value.author, bok.Value.holder);
+                        }
+                        else if ((bok.Value.type == "Physics") && (this.chkPhysics.Checked))
+                        {
+                            this.dgvBooks.Rows.Add(bok.Value.refCode, bok.Value.title, bok.Value.type, bok.Value.author, bok.Value.holder);
+                        }
+                        else if ((bok.Value.type == "Chemistry") && (this.chkChem.Checked))
+                        {
+                            this.dgvBooks.Rows.Add(bok.Value.refCode, bok.Value.title, bok.Value.type, bok.Value.author, bok.Value.holder);
+                        }
+                    }
+                }
+                else if ((txtBookTitle.Text.Trim() == ""))
+                {
+                    if ((bok.Value.author.ToLower().Contains(txtBookAuth.Text.ToLower())))
+                    {
+                        if ((bok.Value.type == "Math") && (this.chkMath.Checked))
+                        {
+                            this.dgvBooks.Rows.Add(bok.Value.refCode, bok.Value.title, bok.Value.type, bok.Value.author, bok.Value.holder);
+                        }
+                        else if ((bok.Value.type == "Physics") && (this.chkPhysics.Checked))
+                        {
+                            this.dgvBooks.Rows.Add(bok.Value.refCode, bok.Value.title, bok.Value.type, bok.Value.author, bok.Value.holder);
+                        }
+                        else if ((bok.Value.type == "Chemistry") && (this.chkChem.Checked))
+                        {
+                            this.dgvBooks.Rows.Add(bok.Value.refCode, bok.Value.title, bok.Value.type, bok.Value.author, bok.Value.holder);
+                        }
+                    }
+                }
+                else 
+                {
+                    if ((bok.Value.title.ToLower().Contains(txtBookTitle.Text.ToLower()))&&(bok.Value.author.ToLower().Contains(txtBookAuth.Text.ToLower())))
+                    {
+                        if ((bok.Value.type == "Math") && (this.chkMath.Checked))
+                        {
+                            this.dgvBooks.Rows.Add(bok.Value.refCode, bok.Value.title, bok.Value.type, bok.Value.author, bok.Value.holder);
+                        }
+                        else if ((bok.Value.type == "Physics") && (this.chkPhysics.Checked))
+                        {
+                            this.dgvBooks.Rows.Add(bok.Value.refCode, bok.Value.title, bok.Value.type, bok.Value.author, bok.Value.holder);
+                        }
+                        else if ((bok.Value.type == "Chemistry") && (this.chkChem.Checked))
+                        {
+                            this.dgvBooks.Rows.Add(bok.Value.refCode, bok.Value.title, bok.Value.type, bok.Value.author, bok.Value.holder);
+                        }
+                    }
+                }
             }
         }
     }
