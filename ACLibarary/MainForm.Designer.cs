@@ -89,7 +89,7 @@
             this.editToolStripMenuItem});
             this.menuMain.Location = new System.Drawing.Point(18, 12);
             this.menuMain.Name = "menuMain";
-            this.menuMain.Size = new System.Drawing.Size(126, 28);
+            this.menuMain.Size = new System.Drawing.Size(241, 28);
             this.menuMain.TabIndex = 0;
             this.menuMain.Text = "menuStrip1";
             // 
@@ -114,6 +114,7 @@
             this.addNewBookToolStripMenuItem.Name = "addNewBookToolStripMenuItem";
             this.addNewBookToolStripMenuItem.Size = new System.Drawing.Size(201, 26);
             this.addNewBookToolStripMenuItem.Text = "Add New Book";
+            this.addNewBookToolStripMenuItem.Click += new System.EventHandler(this.addNewBookToolStripMenuItem_Click);
             // 
             // editToolStripMenuItem
             // 

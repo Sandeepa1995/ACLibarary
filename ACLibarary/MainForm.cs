@@ -62,6 +62,37 @@ namespace ACLibarary
 
         Rectangle TopLeft { get { return new Rectangle(0, 0, _, _); } }
         Rectangle TopRight { get { return new Rectangle(this.ClientSize.Width - _, 0, _, _); } }
+        Rectangle BottomLeft { get { return new Rectangle(0, this.ClientSize.Height - _, _, _); } }
+        Rectangle BottomRight { get { return new Rectangle(this.ClientSize.Width - _, this.ClientSize.Height - _, _, _); } }
+
+        private const int WM_NCHITTEST = 0x84;
+        private const int HT_CLIENT = 0x1;
+        private const int HT_CAPTION = 0x2;
+
+
+        protected override void WndProc(ref Message message)
+        {
+            base.WndProc(ref message);
+
+            if (message.Msg == WM_NCHITTEST)
+                message.Result = (IntPtr)(HT_CAPTION);
+
+            if (message.Msg == 0x84) // WM_NCHITTEST
+            {
+                var cursor = this.PointToClient(Cursor.Position);
+
+                if (TopLeft.Contains(cursor)) message.Result = (IntPtr)HTTOPLEFT;
+                else if (TopRight.Contains(cursor)) message.Result = (IntPtr)HTTOPRIGHT;
+                else if (BottomLeft.Contains(cursor)) message.Result = (IntPtr)HTBOTTOMLEFT;
+                else if (BottomRight.Contains(cursor)) message.Result = (IntPtr)HTBOTTOMRIGHT;
+
+                else if (Top.Contains(cursor)) message.Result = (IntPtr)HTTOP;
+                else if (Left.Contains(cursor)) message.Result = (IntPtr)HTLEFT;
+                else if (Right.Contains(cursor)) message.Result = (IntPtr)HTRIGHT;
+                else if (Bottom.Contains(cursor)) message.Result = (IntPtr)HTBOTTOM;
+            }
+        }
+
 
         private void btnMinimizeMain_Click(object sender, EventArgs e)
         {
@@ -79,10 +110,7 @@ namespace ACLibarary
         }
 
 
-        Rectangle BottomLeft { get { return new Rectangle(0, this.ClientSize.Height - _, _, _); } }
-
-
-        Rectangle BottomRight { get { return new Rectangle(this.ClientSize.Width - _, this.ClientSize.Height - _, _, _); } }
+       
 
         private void chkMath_CheckedChanged(object sender, EventArgs e)
         {
@@ -92,6 +120,12 @@ namespace ACLibarary
         private void chkPhysics_CheckedChanged(object sender, EventArgs e)
         {
             loadSelectedType();
+        }
+
+        private void addNewBookToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AddBookForm aBF = new AddBookForm();
+            aBF.ShowDialog();
         }
 
         private void chkChem_CheckedChanged(object sender, EventArgs e)
@@ -130,34 +164,7 @@ namespace ACLibarary
             }
         }
 
-        private const int WM_NCHITTEST = 0x84;
-        private const int HT_CLIENT = 0x1;
-        private const int HT_CAPTION = 0x2;
-
-
-        protected override void WndProc(ref Message message)
-        {
-            base.WndProc(ref message);
-
-            if (message.Msg == WM_NCHITTEST)
-                message.Result = (IntPtr)(HT_CAPTION);
-
-            if (message.Msg == 0x84) // WM_NCHITTEST
-            {
-                var cursor = this.PointToClient(Cursor.Position);
-
-                if (TopLeft.Contains(cursor)) message.Result = (IntPtr)HTTOPLEFT;
-                else if (TopRight.Contains(cursor)) message.Result = (IntPtr)HTTOPRIGHT;
-                else if (BottomLeft.Contains(cursor)) message.Result = (IntPtr)HTBOTTOMLEFT;
-                else if (BottomRight.Contains(cursor)) message.Result = (IntPtr)HTBOTTOMRIGHT;
-
-                else if (Top.Contains(cursor)) message.Result = (IntPtr)HTTOP;
-                else if (Left.Contains(cursor)) message.Result = (IntPtr)HTLEFT;
-                else if (Right.Contains(cursor)) message.Result = (IntPtr)HTRIGHT;
-                else if (Bottom.Contains(cursor)) message.Result = (IntPtr)HTBOTTOM;
-            }
-        }
-
+        
 
         private void btnCloseMain_Click(object sender, EventArgs e)
         {
