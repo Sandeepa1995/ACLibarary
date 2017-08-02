@@ -21,6 +21,7 @@ namespace ACLibarary
     {
         static IFirebaseConfig config = new FirebaseConfig
         {
+            AuthSecret = "bftTpTIVZPM1G3wk8ywunEdwXLJIm2mXxWCYXXWz",
             BasePath = "https://anandamathslib.firebaseio.com/"
         };
         IFirebaseClient _client = new FirebaseClient(config);
@@ -111,6 +112,11 @@ namespace ACLibarary
             {
                 btnLogin_Click(this, new EventArgs());
             }
+        }
+
+        private void txtUserName_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

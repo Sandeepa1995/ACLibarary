@@ -1,4 +1,9 @@
-﻿using System;
+﻿using ACLibarary.Classes;
+using FireSharp;
+using FireSharp.Config;
+using FireSharp.Interfaces;
+using FireSharp.Response;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -19,10 +24,14 @@ namespace ACLibarary
             this.SetStyle(ControlStyles.ResizeRedraw, true); // this is to avoid visual artifacts
         }
 
-        private void AddBook_Load(object sender, EventArgs e)
-        {
+        
 
-        }
+        static IFirebaseConfig config = new FirebaseConfig
+        {
+            AuthSecret = "bftTpTIVZPM1G3wk8ywunEdwXLJIm2mXxWCYXXWz",
+            BasePath = "https://anandamathslib.firebaseio.com/"
+        };
+        IFirebaseClient _client = new FirebaseClient(config);
 
         protected override void OnPaint(PaintEventArgs e) // you can safely omit this method if you want
         {
@@ -50,15 +59,21 @@ namespace ACLibarary
         Rectangle Right { get { return new Rectangle(this.ClientSize.Width - _, 0, _, this.ClientSize.Height); } }
 
         Rectangle TopLeft { get { return new Rectangle(0, 0, _, _); } }
+        Rectangle TopRight { get { return new Rectangle(this.ClientSize.Width - _, 0, _, _); } }
+        Rectangle BottomLeft { get { return new Rectangle(0, this.ClientSize.Height - _, _, _); } }
+        Rectangle BottomRight { get { return new Rectangle(this.ClientSize.Width - _, this.ClientSize.Height - _, _, _); } }
 
         private void btnCloseAddBook_Click(object sender, EventArgs e)
         {
             this.Close();
         }
 
-        Rectangle TopRight { get { return new Rectangle(this.ClientSize.Width - _, 0, _, _); } }
-        Rectangle BottomLeft { get { return new Rectangle(0, this.ClientSize.Height - _, _, _); } }
-        Rectangle BottomRight { get { return new Rectangle(this.ClientSize.Width - _, this.ClientSize.Height - _, _, _); } }
+        private void btnAddBook_Click(object sender, EventArgs e)
+        {
+
+        }
+
+       
 
         private const int WM_NCHITTEST = 0x84;
         private const int HT_CLIENT = 0x1;
@@ -86,6 +101,41 @@ namespace ACLibarary
                 else if (Right.Contains(cursor)) message.Result = (IntPtr)HTRIGHT;
                 else if (Bottom.Contains(cursor)) message.Result = (IntPtr)HTBOTTOM;
             }
+        }
+
+        private async void AddBook_Load(object sender, EventArgs e)
+        {
+            //string refCde;
+            //string tpe;
+            //FirebaseResponse res = await _client.GetAsync("indexLimit/");
+            //IDictionary<string, string> bookList = res.ResultAs<IDictionary<string, string>>();
+
+            //if (rbAddMath.Checked)
+            //{
+            //    tpe = "Math";
+            //    refCde = "MAT";
+            //}
+            //else if (rbAddPhy.Checked)
+            //{
+            //    tpe = "Physics";
+            //    refCde = "PHY";
+            //}
+            //else
+            //{
+            //    tpe = "Chemistry";
+            //    refCde = "CHM";
+            //}
+
+            //var book = new Book
+            //{
+            //    title = txtAddTitle.Text,
+            //    author = txtAddAuth.Text,
+            //    holder = "Library",
+            //    refCode = "MAT000001",
+            //    type = tpe
+            //};
+
+            //PushResponse response = await _client.PushAsync("books/", book);
         }
     }
 }

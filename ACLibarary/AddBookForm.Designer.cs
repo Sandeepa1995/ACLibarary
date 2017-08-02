@@ -42,7 +42,7 @@
             this.rbAddMath = new System.Windows.Forms.RadioButton();
             this.rbAddPhy = new System.Windows.Forms.RadioButton();
             this.rbAddChem = new System.Windows.Forms.RadioButton();
-            this.lblRef = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.nUDAddQuan)).BeginInit();
             this.SuspendLayout();
             // 
@@ -61,13 +61,14 @@
             // 
             // btnAddBook
             // 
-            this.btnAddBook.Location = new System.Drawing.Point(348, 298);
+            this.btnAddBook.Location = new System.Drawing.Point(348, 323);
             this.btnAddBook.Margin = new System.Windows.Forms.Padding(4);
             this.btnAddBook.Name = "btnAddBook";
             this.btnAddBook.Size = new System.Drawing.Size(100, 28);
             this.btnAddBook.TabIndex = 20;
             this.btnAddBook.Text = "Add Book";
             this.btnAddBook.UseVisualStyleBackColor = true;
+            this.btnAddBook.Click += new System.EventHandler(this.btnAddBook_Click);
             // 
             // label6
             // 
@@ -94,7 +95,7 @@
             this.nUDAddQuan.Location = new System.Drawing.Point(151, 161);
             this.nUDAddQuan.Margin = new System.Windows.Forms.Padding(4);
             this.nUDAddQuan.Name = "nUDAddQuan";
-            this.nUDAddQuan.Size = new System.Drawing.Size(160, 22);
+            this.nUDAddQuan.Size = new System.Drawing.Size(85, 22);
             this.nUDAddQuan.TabIndex = 17;
             this.nUDAddQuan.Value = new decimal(new int[] {
             1,
@@ -115,7 +116,7 @@
             // txtAddAuth
             // 
             this.txtAddAuth.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtAddAuth.Location = new System.Drawing.Point(151, 123);
+            this.txtAddAuth.Location = new System.Drawing.Point(151, 130);
             this.txtAddAuth.Margin = new System.Windows.Forms.Padding(4);
             this.txtAddAuth.Name = "txtAddAuth";
             this.txtAddAuth.Size = new System.Drawing.Size(297, 22);
@@ -182,20 +183,22 @@
             this.rbAddChem.Text = "Chemistry";
             this.rbAddChem.UseVisualStyleBackColor = true;
             // 
-            // lblRef
+            // textBox1
             // 
-            this.lblRef.AutoSize = true;
-            this.lblRef.Location = new System.Drawing.Point(148, 237);
-            this.lblRef.Name = "lblRef";
-            this.lblRef.Size = new System.Drawing.Size(0, 17);
-            this.lblRef.TabIndex = 24;
+            this.textBox1.Location = new System.Drawing.Point(151, 234);
+            this.textBox1.Multiline = true;
+            this.textBox1.Name = "textBox1";
+            this.textBox1.ReadOnly = true;
+            this.textBox1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.textBox1.Size = new System.Drawing.Size(297, 61);
+            this.textBox1.TabIndex = 24;
             // 
             // AddBookForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(499, 387);
-            this.Controls.Add(this.lblRef);
+            this.Controls.Add(this.textBox1);
             this.Controls.Add(this.rbAddChem);
             this.Controls.Add(this.rbAddPhy);
             this.Controls.Add(this.rbAddMath);
@@ -212,6 +215,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "AddBookForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "AddBook";
             this.Load += new System.EventHandler(this.AddBook_Load);
             ((System.ComponentModel.ISupportInitialize)(this.nUDAddQuan)).EndInit();
@@ -235,6 +239,6 @@
         private System.Windows.Forms.RadioButton rbAddMath;
         private System.Windows.Forms.RadioButton rbAddPhy;
         private System.Windows.Forms.RadioButton rbAddChem;
-        private System.Windows.Forms.Label lblRef;
+        private System.Windows.Forms.TextBox textBox1;
     }
 }
