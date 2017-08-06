@@ -26,7 +26,7 @@ namespace ACLibarary
 
         static IFirebaseConfig config = new FirebaseConfig
         {
-            AuthSecret = "bftTpTIVZPM1G3wk8ywunEdwXLJIm2mXxWCYXXWz",
+            AuthSecret = Encryption.ciphperString,
             BasePath = "https://anandamathslib.firebaseio.com/"
         };
         IFirebaseClient _client = new FirebaseClient(config);

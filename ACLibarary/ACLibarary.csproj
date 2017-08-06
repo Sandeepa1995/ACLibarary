@@ -184,6 +184,7 @@
       <DependentUpon>AddBookForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Classes\Book.cs" />
+    <Compile Include="Classes\Encryption.cs" />
     <Compile Include="Classes\Student.cs" />
     <Compile Include="LoginForm.cs">
       <SubType>Form</SubType>

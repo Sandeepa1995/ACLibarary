@@ -11,17 +11,20 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+ 
+
 
 namespace ACLibarary
 {
     public partial class Login : Form
     {
+
         static IFirebaseConfig config = new FirebaseConfig
         {
-            AuthSecret = "bftTpTIVZPM1G3wk8ywunEdwXLJIm2mXxWCYXXWz",
             BasePath = "https://anandamathslib.firebaseio.com/"
         };
         IFirebaseClient _client = new FirebaseClient(config);
@@ -87,15 +90,31 @@ namespace ACLibarary
             //MessageBox.Show(res.ToString());
             //Student todo = res.ResultAs<Student>(); //The response will contain the data being retreived
             //MessageBox.Show(todo.name.ToString());
-
-            if ((txtUserName.Text == "admin") && (txtPass.Text == "00000"))
+            
+            //if ((txtPass.Text == "00000"))
+            //{
+            //    //Clipboard.SetText(Encryption.Encrypt("bftTpTIVZPM1G3wk8ywunEdwXLJIm2mXxWCYXXWz", txtPass.Text));
+            //    config.AuthSecret = (Encryption.Decrypt("Hsd1PygbTgs71UhbHJzUjUYPp / tgnU3L6H1ChvPBv5iBGqZWqJ8wzko2XeSYqoO9", txtPass.Text));
+            //    //this.DialogResult = DialogResult.OK;
+            //}
+            //else
+            //{
+            try
             {
-                this.DialogResult = DialogResult.OK;
+                FirebaseResponse res = await _client.GetAsync("key");
+                IDictionary<string, string> reslt = res.ResultAs<IDictionary<string, string>>();
+                Encryption.ciphperString = Encryption.Decrypt(reslt["authSecret"],txtPass.Text);
+    
+                if (Convert.ToBoolean(reslt["pass"]))
+                {
+                    this.DialogResult = DialogResult.OK;
+                }
             }
-            else
-            {
+            catch (CryptographicException ex) {
                 MessageBox.Show("Incorrect username or password!", "Invalid Login", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+               
+            //}
         }
 
         private void txtPass_KeyDown(object sender, KeyEventArgs e)
@@ -114,9 +133,9 @@ namespace ACLibarary
             }
         }
 
-        private void txtUserName_TextChanged(object sender, EventArgs e)
+        private void txtPass_TextChanged(object sender, EventArgs e)
         {
-
+            //Hsd1PygbTgs71UhbHJzUjUYPp / tgnU3L6H1ChvPBv5iBGqZWqJ8wzko2XeSYqoO9
         }
     }
 }
