@@ -221,6 +221,42 @@ namespace ACLibarary
             }
         }
 
+        private async void btnDeleteStudent_Click(object sender, EventArgs e)
+        {
+            if (dgvStudent.SelectedRows.Count > 0)
+            {
+
+                DialogResult result = MessageBox.Show("Do you want to delete this student?", "Confirmation", MessageBoxButtons.YesNo);
+                if (result == DialogResult.Yes)
+                {
+                    int selectedrowindex = dgvStudent.SelectedCells[0].RowIndex;
+
+                    DataGridViewRow selectedRow = dgvStudent.Rows[selectedrowindex];
+
+                    string deleteStudent = (Convert.ToString(selectedRow.Cells["Index"].Value));
+
+
+                    FirebaseResponse res = await _client.GetAsync("students/");
+                    IDictionary<string, Student> studentList = res.ResultAs<IDictionary<string, Student>>();
+
+                    //List<Book> bookList = res.ResultAs<List<Book>>();
+                    foreach (KeyValuePair<string, Student> bok in studentList)
+                    {
+                        if (bok.Value.index == deleteStudent)
+                        {
+                            await _client.DeleteAsync("students/"+bok.Key);
+                            LoadAllStudents();
+
+                        }
+
+                    }
+
+                }
+
+            }
+            
+        }
+
         private void txtBookAuth_TextChanged(object sender, EventArgs e)
         {
             loadSelectedType();
@@ -270,6 +306,8 @@ namespace ACLibarary
         {
             FirebaseResponse res = await _client.GetAsync("students/");
             IDictionary<string, Student> studentList = res.ResultAs<IDictionary<string, Student>>();
+            dgvStudent.Rows.Clear();
+            dgvStudent.Refresh();
 
             //List<Book> bookList = res.ResultAs<List<Book>>();
             foreach (KeyValuePair<string, Student> bok in studentList)
