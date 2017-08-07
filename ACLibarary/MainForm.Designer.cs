@@ -47,7 +47,9 @@
             this.holder = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.chkChem = new System.Windows.Forms.CheckBox();
+            this.chkPhysics = new System.Windows.Forms.CheckBox();
+            this.chkMath = new System.Windows.Forms.CheckBox();
             this.label3 = new System.Windows.Forms.Label();
             this.txtBookCode = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -59,16 +61,12 @@
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.r2 = new System.Windows.Forms.RadioButton();
             this.r1 = new System.Windows.Forms.RadioButton();
-            this.button2 = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.textBox4 = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.textBox5 = new System.Windows.Forms.TextBox();
             this.button3 = new System.Windows.Forms.Button();
-            this.chkMath = new System.Windows.Forms.CheckBox();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
-            this.chkChem = new System.Windows.Forms.CheckBox();
-            this.chkPhysics = new System.Windows.Forms.CheckBox();
             this.menuMain.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -130,13 +128,14 @@
             this.changeUserPasswordToolStripMenuItem.Name = "changeUserPasswordToolStripMenuItem";
             this.changeUserPasswordToolStripMenuItem.Size = new System.Drawing.Size(233, 26);
             this.changeUserPasswordToolStripMenuItem.Text = "Change User Password";
+            this.changeUserPasswordToolStripMenuItem.Click += new System.EventHandler(this.changeUserPasswordToolStripMenuItem_Click);
             // 
             // btnCloseMain
             // 
             this.btnCloseMain.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnCloseMain.FlatAppearance.BorderSize = 0;
             this.btnCloseMain.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCloseMain.Location = new System.Drawing.Point(898, 12);
+            this.btnCloseMain.Location = new System.Drawing.Point(777, 12);
             this.btnCloseMain.Name = "btnCloseMain";
             this.btnCloseMain.Size = new System.Drawing.Size(32, 28);
             this.btnCloseMain.TabIndex = 1;
@@ -149,7 +148,7 @@
             this.btnMinimizeMain.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnMinimizeMain.FlatAppearance.BorderSize = 0;
             this.btnMinimizeMain.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnMinimizeMain.Location = new System.Drawing.Point(860, 12);
+            this.btnMinimizeMain.Location = new System.Drawing.Point(739, 12);
             this.btnMinimizeMain.Name = "btnMinimizeMain";
             this.btnMinimizeMain.Size = new System.Drawing.Size(32, 28);
             this.btnMinimizeMain.TabIndex = 2;
@@ -159,16 +158,14 @@
             // 
             // tabControl1
             // 
-            this.tabControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tabControl1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
-            this.tabControl1.Location = new System.Drawing.Point(18, 47);
+            this.tabControl1.Location = new System.Drawing.Point(27, 47);
             this.tabControl1.Margin = new System.Windows.Forms.Padding(4);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(916, 479);
+            this.tabControl1.Size = new System.Drawing.Size(782, 479);
             this.tabControl1.TabIndex = 3;
             // 
             // tabPage1
@@ -180,7 +177,7 @@
             this.tabPage1.Margin = new System.Windows.Forms.Padding(4);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(4);
-            this.tabPage1.Size = new System.Drawing.Size(908, 450);
+            this.tabPage1.Size = new System.Drawing.Size(774, 450);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Books";
             // 
@@ -208,7 +205,7 @@
             this.dgvBooks.RowHeadersVisible = false;
             this.dgvBooks.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dgvBooks.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvBooks.Size = new System.Drawing.Size(893, 320);
+            this.dgvBooks.Size = new System.Drawing.Size(759, 320);
             this.dgvBooks.TabIndex = 4;
             // 
             // refCode
@@ -247,7 +244,6 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox1.Controls.Add(this.groupBox2);
-            this.groupBox1.Controls.Add(this.button1);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.txtBookCode);
             this.groupBox1.Controls.Add(this.label2);
@@ -258,7 +254,7 @@
             this.groupBox1.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(4);
-            this.groupBox1.Size = new System.Drawing.Size(893, 108);
+            this.groupBox1.Size = new System.Drawing.Size(759, 108);
             this.groupBox1.TabIndex = 3;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Search";
@@ -276,15 +272,44 @@
             this.groupBox2.TabIndex = 11;
             this.groupBox2.TabStop = false;
             // 
-            // button1
+            // chkChem
             // 
-            this.button1.Location = new System.Drawing.Point(740, 23);
-            this.button1.Margin = new System.Windows.Forms.Padding(4);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(147, 73);
-            this.button1.TabIndex = 10;
-            this.button1.Text = "Search";
-            this.button1.UseVisualStyleBackColor = true;
+            this.chkChem.AutoSize = true;
+            this.chkChem.Checked = true;
+            this.chkChem.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkChem.Location = new System.Drawing.Point(158, 15);
+            this.chkChem.Name = "chkChem";
+            this.chkChem.Size = new System.Drawing.Size(92, 21);
+            this.chkChem.TabIndex = 7;
+            this.chkChem.Text = "Chemistry";
+            this.chkChem.UseVisualStyleBackColor = true;
+            this.chkChem.CheckedChanged += new System.EventHandler(this.chkChem_CheckedChanged);
+            // 
+            // chkPhysics
+            // 
+            this.chkPhysics.AutoSize = true;
+            this.chkPhysics.Checked = true;
+            this.chkPhysics.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkPhysics.Location = new System.Drawing.Point(74, 15);
+            this.chkPhysics.Name = "chkPhysics";
+            this.chkPhysics.Size = new System.Drawing.Size(78, 21);
+            this.chkPhysics.TabIndex = 5;
+            this.chkPhysics.Text = "Physics";
+            this.chkPhysics.UseVisualStyleBackColor = true;
+            this.chkPhysics.CheckedChanged += new System.EventHandler(this.chkPhysics_CheckedChanged);
+            // 
+            // chkMath
+            // 
+            this.chkMath.AutoSize = true;
+            this.chkMath.Checked = true;
+            this.chkMath.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkMath.Location = new System.Drawing.Point(7, 15);
+            this.chkMath.Name = "chkMath";
+            this.chkMath.Size = new System.Drawing.Size(61, 21);
+            this.chkMath.TabIndex = 5;
+            this.chkMath.Text = "Math";
+            this.chkMath.UseVisualStyleBackColor = true;
+            this.chkMath.CheckedChanged += new System.EventHandler(this.chkMath_CheckedChanged);
             // 
             // label3
             // 
@@ -352,7 +377,7 @@
             this.tabPage2.Margin = new System.Windows.Forms.Padding(4);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(4);
-            this.tabPage2.Size = new System.Drawing.Size(908, 450);
+            this.tabPage2.Size = new System.Drawing.Size(774, 450);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Students";
             // 
@@ -367,14 +392,13 @@
             this.dataGridView2.ReadOnly = true;
             this.dataGridView2.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dataGridView2.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView2.Size = new System.Drawing.Size(893, 357);
+            this.dataGridView2.Size = new System.Drawing.Size(741, 357);
             this.dataGridView2.TabIndex = 5;
             // 
             // groupBox3
             // 
             this.groupBox3.Controls.Add(this.r2);
             this.groupBox3.Controls.Add(this.r1);
-            this.groupBox3.Controls.Add(this.button2);
             this.groupBox3.Controls.Add(this.label4);
             this.groupBox3.Controls.Add(this.textBox4);
             this.groupBox3.Controls.Add(this.label5);
@@ -383,7 +407,7 @@
             this.groupBox3.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Padding = new System.Windows.Forms.Padding(4);
-            this.groupBox3.Size = new System.Drawing.Size(887, 64);
+            this.groupBox3.Size = new System.Drawing.Size(737, 64);
             this.groupBox3.TabIndex = 2;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Search";
@@ -411,16 +435,6 @@
             this.r1.TabStop = true;
             this.r1.Text = "12";
             this.r1.UseVisualStyleBackColor = false;
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(768, 23);
-            this.button2.Margin = new System.Windows.Forms.Padding(4);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(111, 30);
-            this.button2.TabIndex = 7;
-            this.button2.Text = "Search";
-            this.button2.UseVisualStyleBackColor = true;
             // 
             // label4
             // 
@@ -455,7 +469,7 @@
             this.textBox5.Location = new System.Drawing.Point(442, 26);
             this.textBox5.Margin = new System.Windows.Forms.Padding(4);
             this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(305, 22);
+            this.textBox5.Size = new System.Drawing.Size(287, 22);
             this.textBox5.TabIndex = 2;
             // 
             // button3
@@ -465,24 +479,11 @@
             this.button3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.button3.FlatAppearance.BorderSize = 0;
             this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button3.Location = new System.Drawing.Point(909, 525);
+            this.button3.Location = new System.Drawing.Point(784, 529);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(25, 24);
             this.button3.TabIndex = 4;
             this.button3.UseVisualStyleBackColor = true;
-            // 
-            // chkMath
-            // 
-            this.chkMath.AutoSize = true;
-            this.chkMath.Checked = true;
-            this.chkMath.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkMath.Location = new System.Drawing.Point(7, 15);
-            this.chkMath.Name = "chkMath";
-            this.chkMath.Size = new System.Drawing.Size(61, 21);
-            this.chkMath.TabIndex = 5;
-            this.chkMath.Text = "Math";
-            this.chkMath.UseVisualStyleBackColor = true;
-            this.chkMath.CheckedChanged += new System.EventHandler(this.chkMath_CheckedChanged);
             // 
             // checkBox1
             // 
@@ -494,37 +495,11 @@
             this.checkBox1.Text = "checkBox1";
             this.checkBox1.UseVisualStyleBackColor = true;
             // 
-            // chkChem
-            // 
-            this.chkChem.AutoSize = true;
-            this.chkChem.Checked = true;
-            this.chkChem.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkChem.Location = new System.Drawing.Point(158, 15);
-            this.chkChem.Name = "chkChem";
-            this.chkChem.Size = new System.Drawing.Size(92, 21);
-            this.chkChem.TabIndex = 7;
-            this.chkChem.Text = "Chemistry";
-            this.chkChem.UseVisualStyleBackColor = true;
-            this.chkChem.CheckedChanged += new System.EventHandler(this.chkChem_CheckedChanged);
-            // 
-            // chkPhysics
-            // 
-            this.chkPhysics.AutoSize = true;
-            this.chkPhysics.Checked = true;
-            this.chkPhysics.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkPhysics.Location = new System.Drawing.Point(74, 15);
-            this.chkPhysics.Name = "chkPhysics";
-            this.chkPhysics.Size = new System.Drawing.Size(78, 21);
-            this.chkPhysics.TabIndex = 5;
-            this.chkPhysics.Text = "Physics";
-            this.chkPhysics.UseVisualStyleBackColor = true;
-            this.chkPhysics.CheckedChanged += new System.EventHandler(this.chkPhysics_CheckedChanged);
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(952, 568);
+            this.ClientSize = new System.Drawing.Size(831, 568);
             this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.tabControl1);
@@ -571,7 +546,6 @@
         private System.Windows.Forms.DataGridView dgvBooks;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txtBookCode;
         private System.Windows.Forms.Label label2;
@@ -583,7 +557,6 @@
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.RadioButton r2;
         private System.Windows.Forms.RadioButton r1;
-        private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox textBox4;
         private System.Windows.Forms.Label label5;

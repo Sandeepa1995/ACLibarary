@@ -11,6 +11,8 @@ namespace ACLibarary.Classes
     {
         public static string ciphperString { get; set; }
 
+        public static string enteredPass { get; set; }
+
         public static string Encrypt(string toEncrypt, string key)
         {
             byte[] keyArray;

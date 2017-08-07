@@ -129,6 +129,12 @@ namespace ACLibarary
             aBF.ShowDialog();
         }
 
+        private void changeUserPasswordToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ChangePasswordForm cPF = new ChangePasswordForm();
+            cPF.ShowDialog();
+        }
+
         private void chkChem_CheckedChanged(object sender, EventArgs e)
         {
             loadSelectedType();

@@ -104,6 +104,7 @@ namespace ACLibarary
                 FirebaseResponse res = await _client.GetAsync("key");
                 IDictionary<string, string> reslt = res.ResultAs<IDictionary<string, string>>();
                 Encryption.ciphperString = Encryption.Decrypt(reslt["authSecret"],txtPass.Text);
+                Encryption.enteredPass = txtPass.Text;
     
                 if (Convert.ToBoolean(reslt["pass"]))
                 {
