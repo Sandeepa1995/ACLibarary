@@ -34,6 +34,7 @@ namespace ACLibarary
         private void Main_Load(object sender, EventArgs e)
         {
             LoadAllBooks();
+            LoadAllStudents();
             for (int i = 0; i < clbClass.Items.Count; i++)
                 clbClass.SetItemChecked(i, true);
         }
@@ -150,6 +151,11 @@ namespace ACLibarary
 
         private void clbClass_SelectedIndexChanged(object sender, EventArgs e)
         {
+            loadSelectedStudents();
+        }
+
+        private void cb13_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
 
         }
 
@@ -158,9 +164,46 @@ namespace ACLibarary
             loadSelectedType();
         }
 
+        private async void textBox4_TextChanged(object sender, EventArgs e)
+        {
+            txtStudentName.Text = "";
+            cb12.Checked = true;
+            cb13.Checked = true;
+            for (int i = 0; i < clbClass.Items.Count; i++)
+                clbClass.SetItemChecked(i, true);
+
+            FirebaseResponse res = await _client.GetAsync("students/");
+            IDictionary<string, Student> studentList = res.ResultAs<IDictionary<string, Student>>();
+            dgvStudent.Rows.Clear();
+            dgvStudent.Refresh();
+
+            foreach (KeyValuePair<string, Student> bok in studentList)
+            {
+                if (bok.Value.index.ToLower().Contains(txtStudentIndex.Text.ToLower()))
+                {
+                    this.dgvStudent.Rows.Add(bok.Value.index, bok.Value.name, bok.Value.grade, bok.Value.cls, bok.Value.borrowed);
+                }
+            }
+        }
+
+        private void txtStudentName_TextChanged(object sender, EventArgs e)
+        {
+            loadSelectedStudents();
+        }
+
         private void txtBookTitle_TextChanged(object sender, EventArgs e)
         {
             loadSelectedType();
+        }
+
+        private void cb12_CheckedChanged(object sender, EventArgs e)
+        {
+            loadSelectedStudents();
+        }
+
+        private void cb13_CheckedChanged(object sender, EventArgs e)
+        {
+            loadSelectedStudents();
         }
 
         private void txtBookAuth_TextChanged(object sender, EventArgs e)
@@ -205,6 +248,21 @@ namespace ACLibarary
                 //MessageBox.Show(bok.Value.title);
                 this.dgvBooks.Rows.Add(bok.Value.refCode, bok.Value.title, bok.Value.type, bok.Value.author, bok.Value.holder);
             }
+
+        }
+
+        public async void LoadAllStudents()
+        {
+            FirebaseResponse res = await _client.GetAsync("students/");
+            IDictionary<string, Student> studentList = res.ResultAs<IDictionary<string, Student>>();
+
+            //List<Book> bookList = res.ResultAs<List<Book>>();
+            foreach (KeyValuePair<string, Student> bok in studentList)
+            {
+                //MessageBox.Show(bok.Value.title);
+                this.dgvStudent.Rows.Add(bok.Value.index, bok.Value.name, bok.Value.grade, bok.Value.cls, bok.Value.borrowed);
+            }
+
         }
 
         public async void loadSelectedType() {
@@ -286,6 +344,169 @@ namespace ACLibarary
                     }
                 }
             }
+        }
+
+        public async void loadSelectedStudents() {
+            txtStudentIndex.Text = "";
+
+            FirebaseResponse res = await _client.GetAsync("students/");
+            IDictionary<string, Student> studentList = res.ResultAs<IDictionary<string, Student>>();
+            dgvStudent.Rows.Clear();
+            dgvStudent.Refresh();
+
+            foreach (KeyValuePair<string, Student> bok in studentList)
+            {
+                if (this.txtStudentName.Text.Trim() == "")
+                {
+                    if ((bok.Value.grade == "12") && (cb12.Checked))
+                    {
+                        if ((bok.Value.cls == "1") && (clbClass.GetItemChecked(0)))
+                        {
+                            this.dgvStudent.Rows.Add(bok.Value.index, bok.Value.name, bok.Value.grade, bok.Value.cls, bok.Value.borrowed);
+                        }
+                        else if ((bok.Value.cls == "2") && (clbClass.GetItemChecked(1)))
+                        {
+                            this.dgvStudent.Rows.Add(bok.Value.index, bok.Value.name, bok.Value.grade, bok.Value.cls, bok.Value.borrowed);
+                        }
+                        else if ((bok.Value.cls == "3") && (clbClass.GetItemChecked(2)))
+                        {
+                            this.dgvStudent.Rows.Add(bok.Value.index, bok.Value.name, bok.Value.grade, bok.Value.cls, bok.Value.borrowed);
+                        }
+                        else if ((bok.Value.cls == "4") && (clbClass.GetItemChecked(3)))
+                        {
+                            this.dgvStudent.Rows.Add(bok.Value.index, bok.Value.name, bok.Value.grade, bok.Value.cls, bok.Value.borrowed);
+                        }
+                        else if ((bok.Value.cls == "5") && (clbClass.GetItemChecked(4)))
+                        {
+                            this.dgvStudent.Rows.Add(bok.Value.index, bok.Value.name, bok.Value.grade, bok.Value.cls, bok.Value.borrowed);
+                        }
+                        else if ((bok.Value.cls == "6") && (clbClass.GetItemChecked(5)))
+                        {
+                            this.dgvStudent.Rows.Add(bok.Value.index, bok.Value.name, bok.Value.grade, bok.Value.cls, bok.Value.borrowed);
+                        }
+                        else if ((bok.Value.cls == "7") && (clbClass.GetItemChecked(6)))
+                        {
+                            this.dgvStudent.Rows.Add(bok.Value.index, bok.Value.name, bok.Value.grade, bok.Value.cls, bok.Value.borrowed);
+                        }
+                        else if ((bok.Value.cls == "E") && (clbClass.GetItemChecked(7)))
+                        {
+                            this.dgvStudent.Rows.Add(bok.Value.index, bok.Value.name, bok.Value.grade, bok.Value.cls, bok.Value.borrowed);
+                        }
+
+                    }
+                    else if ((bok.Value.grade == "13") && (cb13.Checked))
+                    {
+                        if ((bok.Value.cls == "1") && (clbClass.GetItemChecked(0)))
+                        {
+                            this.dgvStudent.Rows.Add(bok.Value.index, bok.Value.name, bok.Value.grade, bok.Value.cls, bok.Value.borrowed);
+                        }
+                        else if ((bok.Value.cls == "2") && (clbClass.GetItemChecked(1)))
+                        {
+                            this.dgvStudent.Rows.Add(bok.Value.index, bok.Value.name, bok.Value.grade, bok.Value.cls, bok.Value.borrowed);
+                        }
+                        else if ((bok.Value.cls == "3") && (clbClass.GetItemChecked(2)))
+                        {
+                            this.dgvStudent.Rows.Add(bok.Value.index, bok.Value.name, bok.Value.grade, bok.Value.cls, bok.Value.borrowed);
+                        }
+                        else if ((bok.Value.cls == "4") && (clbClass.GetItemChecked(3)))
+                        {
+                            this.dgvStudent.Rows.Add(bok.Value.index, bok.Value.name, bok.Value.grade, bok.Value.cls, bok.Value.borrowed);
+                        }
+                        else if ((bok.Value.cls == "5") && (clbClass.GetItemChecked(4)))
+                        {
+                            this.dgvStudent.Rows.Add(bok.Value.index, bok.Value.name, bok.Value.grade, bok.Value.cls, bok.Value.borrowed);
+                        }
+                        else if ((bok.Value.cls == "6") && (clbClass.GetItemChecked(5)))
+                        {
+                            this.dgvStudent.Rows.Add(bok.Value.index, bok.Value.name, bok.Value.grade, bok.Value.cls, bok.Value.borrowed);
+                        }
+                        else if ((bok.Value.cls == "7") && (clbClass.GetItemChecked(6)))
+                        {
+                            this.dgvStudent.Rows.Add(bok.Value.index, bok.Value.name, bok.Value.grade, bok.Value.cls, bok.Value.borrowed);
+                        }
+                        else if ((bok.Value.cls == "E") && (clbClass.GetItemChecked(7)))
+                        {
+                            this.dgvStudent.Rows.Add(bok.Value.index, bok.Value.name, bok.Value.grade, bok.Value.cls, bok.Value.borrowed);
+                        }
+                    }
+                }
+                else if (bok.Value.name.ToLower().Contains(this.txtStudentName.Text.Trim().ToLower()))
+                {
+                    if ((bok.Value.grade == "12") && (cb12.Checked))
+                    {
+                        if ((bok.Value.cls == "1") && (clbClass.GetItemChecked(0)))
+                        {
+                            this.dgvStudent.Rows.Add(bok.Value.index, bok.Value.name, bok.Value.grade, bok.Value.cls, bok.Value.borrowed);
+                        }
+                        else if ((bok.Value.cls == "2") && (clbClass.GetItemChecked(1)))
+                        {
+                            this.dgvStudent.Rows.Add(bok.Value.index, bok.Value.name, bok.Value.grade, bok.Value.cls, bok.Value.borrowed);
+                        }
+                        else if ((bok.Value.cls == "3") && (clbClass.GetItemChecked(2)))
+                        {
+                            this.dgvStudent.Rows.Add(bok.Value.index, bok.Value.name, bok.Value.grade, bok.Value.cls, bok.Value.borrowed);
+                        }
+                        else if ((bok.Value.cls == "4") && (clbClass.GetItemChecked(3)))
+                        {
+                            this.dgvStudent.Rows.Add(bok.Value.index, bok.Value.name, bok.Value.grade, bok.Value.cls, bok.Value.borrowed);
+                        }
+                        else if ((bok.Value.cls == "5") && (clbClass.GetItemChecked(4)))
+                        {
+                            this.dgvStudent.Rows.Add(bok.Value.index, bok.Value.name, bok.Value.grade, bok.Value.cls, bok.Value.borrowed);
+                        }
+                        else if ((bok.Value.cls == "6") && (clbClass.GetItemChecked(5)))
+                        {
+                            this.dgvStudent.Rows.Add(bok.Value.index, bok.Value.name, bok.Value.grade, bok.Value.cls, bok.Value.borrowed);
+                        }
+                        else if ((bok.Value.cls == "7") && (clbClass.GetItemChecked(6)))
+                        {
+                            this.dgvStudent.Rows.Add(bok.Value.index, bok.Value.name, bok.Value.grade, bok.Value.cls, bok.Value.borrowed);
+                        }
+                        else if ((bok.Value.cls == "E") && (clbClass.GetItemChecked(7)))
+                        {
+                            this.dgvStudent.Rows.Add(bok.Value.index, bok.Value.name, bok.Value.grade, bok.Value.cls, bok.Value.borrowed);
+                        }
+
+                    }
+                    else if ((bok.Value.grade == "13") && (cb13.Checked))
+                    {
+                        if ((bok.Value.cls == "1") && (clbClass.GetItemChecked(0)))
+                        {
+                            this.dgvStudent.Rows.Add(bok.Value.index, bok.Value.name, bok.Value.grade, bok.Value.cls, bok.Value.borrowed);
+                        }
+                        else if ((bok.Value.cls == "2") && (clbClass.GetItemChecked(1)))
+                        {
+                            this.dgvStudent.Rows.Add(bok.Value.index, bok.Value.name, bok.Value.grade, bok.Value.cls, bok.Value.borrowed);
+                        }
+                        else if ((bok.Value.cls == "3") && (clbClass.GetItemChecked(2)))
+                        {
+                            this.dgvStudent.Rows.Add(bok.Value.index, bok.Value.name, bok.Value.grade, bok.Value.cls, bok.Value.borrowed);
+                        }
+                        else if ((bok.Value.cls == "4") && (clbClass.GetItemChecked(3)))
+                        {
+                            this.dgvStudent.Rows.Add(bok.Value.index, bok.Value.name, bok.Value.grade, bok.Value.cls, bok.Value.borrowed);
+                        }
+                        else if ((bok.Value.cls == "5") && (clbClass.GetItemChecked(4)))
+                        {
+                            this.dgvStudent.Rows.Add(bok.Value.index, bok.Value.name, bok.Value.grade, bok.Value.cls, bok.Value.borrowed);
+                        }
+                        else if ((bok.Value.cls == "6") && (clbClass.GetItemChecked(5)))
+                        {
+                            this.dgvStudent.Rows.Add(bok.Value.index, bok.Value.name, bok.Value.grade, bok.Value.cls, bok.Value.borrowed);
+                        }
+                        else if ((bok.Value.cls == "7") && (clbClass.GetItemChecked(6)))
+                        {
+                            this.dgvStudent.Rows.Add(bok.Value.index, bok.Value.name, bok.Value.grade, bok.Value.cls, bok.Value.borrowed);
+                        }
+                        else if ((bok.Value.cls == "E") && (clbClass.GetItemChecked(7)))
+                        {
+                            this.dgvStudent.Rows.Add(bok.Value.index, bok.Value.name, bok.Value.grade, bok.Value.cls, bok.Value.borrowed);
+                        }
+                    }
+                }
+            }
+
+
         }
     }
 }

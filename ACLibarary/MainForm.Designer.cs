@@ -56,12 +56,12 @@
             this.label1 = new System.Windows.Forms.Label();
             this.txtBookTitle = new System.Windows.Forms.TextBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.cb13 = new System.Windows.Forms.DataGridView();
+            this.dgvStudent = new System.Windows.Forms.DataGridView();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.txtStudentIndex = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.txtStudentName = new System.Windows.Forms.TextBox();
             this.button3 = new System.Windows.Forms.Button();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.editToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
@@ -72,8 +72,13 @@
             this.label6 = new System.Windows.Forms.Label();
             this.clbClass = new System.Windows.Forms.CheckedListBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.checkBox2 = new System.Windows.Forms.CheckBox();
+            this.cb13 = new System.Windows.Forms.CheckBox();
             this.cb12 = new System.Windows.Forms.CheckBox();
+            this.index = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.name = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.grade = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.sclass = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.borrowed = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.menuMain.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -81,7 +86,7 @@
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.tabPage2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.cb13)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvStudent)).BeginInit();
             this.groupBox3.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.SuspendLayout();
@@ -380,7 +385,7 @@
             this.tabPage2.BackColor = System.Drawing.SystemColors.Control;
             this.tabPage2.Controls.Add(this.btnEditStudent);
             this.tabPage2.Controls.Add(this.btnDeleteStudent);
-            this.tabPage2.Controls.Add(this.cb13);
+            this.tabPage2.Controls.Add(this.dgvStudent);
             this.tabPage2.Controls.Add(this.groupBox3);
             this.tabPage2.Location = new System.Drawing.Point(4, 25);
             this.tabPage2.Margin = new System.Windows.Forms.Padding(4);
@@ -390,22 +395,31 @@
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Students";
             // 
-            // cb13
+            // dgvStudent
             // 
-            this.cb13.AllowUserToAddRows = false;
-            this.cb13.AllowUserToDeleteRows = false;
-            this.cb13.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.dgvStudent.AllowUserToAddRows = false;
+            this.dgvStudent.AllowUserToDeleteRows = false;
+            this.dgvStudent.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.cb13.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.cb13.Location = new System.Drawing.Point(11, 106);
-            this.cb13.Margin = new System.Windows.Forms.Padding(4);
-            this.cb13.Name = "cb13";
-            this.cb13.ReadOnly = true;
-            this.cb13.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            this.cb13.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.cb13.Size = new System.Drawing.Size(759, 283);
-            this.cb13.TabIndex = 5;
+            this.dgvStudent.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvStudent.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvStudent.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.index,
+            this.name,
+            this.grade,
+            this.sclass,
+            this.borrowed});
+            this.dgvStudent.Location = new System.Drawing.Point(11, 106);
+            this.dgvStudent.Margin = new System.Windows.Forms.Padding(4);
+            this.dgvStudent.Name = "dgvStudent";
+            this.dgvStudent.ReadOnly = true;
+            this.dgvStudent.RowHeadersVisible = false;
+            this.dgvStudent.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            this.dgvStudent.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvStudent.Size = new System.Drawing.Size(759, 283);
+            this.dgvStudent.TabIndex = 5;
+            this.dgvStudent.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.cb13_CellContentClick);
             // 
             // groupBox3
             // 
@@ -416,9 +430,9 @@
             this.groupBox3.Controls.Add(this.clbClass);
             this.groupBox3.Controls.Add(this.label6);
             this.groupBox3.Controls.Add(this.label4);
-            this.groupBox3.Controls.Add(this.textBox4);
+            this.groupBox3.Controls.Add(this.txtStudentIndex);
             this.groupBox3.Controls.Add(this.label5);
-            this.groupBox3.Controls.Add(this.textBox5);
+            this.groupBox3.Controls.Add(this.txtStudentName);
             this.groupBox3.Location = new System.Drawing.Point(11, 7);
             this.groupBox3.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox3.Name = "groupBox3";
@@ -440,15 +454,16 @@
             this.label4.TabIndex = 4;
             this.label4.Text = "Index :";
             // 
-            // textBox4
+            // txtStudentIndex
             // 
-            this.textBox4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.txtStudentIndex.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox4.Location = new System.Drawing.Point(80, 55);
-            this.textBox4.Margin = new System.Windows.Forms.Padding(4);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(123, 22);
-            this.textBox4.TabIndex = 3;
+            this.txtStudentIndex.Location = new System.Drawing.Point(80, 55);
+            this.txtStudentIndex.Margin = new System.Windows.Forms.Padding(4);
+            this.txtStudentIndex.Name = "txtStudentIndex";
+            this.txtStudentIndex.Size = new System.Drawing.Size(123, 22);
+            this.txtStudentIndex.TabIndex = 3;
+            this.txtStudentIndex.TextChanged += new System.EventHandler(this.textBox4_TextChanged);
             // 
             // label5
             // 
@@ -462,15 +477,16 @@
             this.label5.TabIndex = 2;
             this.label5.Text = "Name :";
             // 
-            // textBox5
+            // txtStudentName
             // 
-            this.textBox5.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.txtStudentName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox5.Location = new System.Drawing.Point(80, 22);
-            this.textBox5.Margin = new System.Windows.Forms.Padding(4);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(287, 22);
-            this.textBox5.TabIndex = 2;
+            this.txtStudentName.Location = new System.Drawing.Point(80, 22);
+            this.txtStudentName.Margin = new System.Windows.Forms.Padding(4);
+            this.txtStudentName.Name = "txtStudentName";
+            this.txtStudentName.Size = new System.Drawing.Size(287, 22);
+            this.txtStudentName.TabIndex = 2;
+            this.txtStudentName.TextChanged += new System.EventHandler(this.txtStudentName_TextChanged);
             // 
             // button3
             // 
@@ -570,7 +586,7 @@
             // groupBox4
             // 
             this.groupBox4.Controls.Add(this.cb12);
-            this.groupBox4.Controls.Add(this.checkBox2);
+            this.groupBox4.Controls.Add(this.cb13);
             this.groupBox4.Location = new System.Drawing.Point(417, 17);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(164, 52);
@@ -578,29 +594,61 @@
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Grade";
             // 
-            // checkBox2
+            // cb13
             // 
-            this.checkBox2.AutoSize = true;
-            this.checkBox2.Checked = true;
-            this.checkBox2.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBox2.Location = new System.Drawing.Point(112, 21);
-            this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Size = new System.Drawing.Size(46, 21);
-            this.checkBox2.TabIndex = 8;
-            this.checkBox2.Text = "13";
-            this.checkBox2.UseVisualStyleBackColor = true;
+            this.cb13.AutoSize = true;
+            this.cb13.Checked = true;
+            this.cb13.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cb13.Location = new System.Drawing.Point(112, 21);
+            this.cb13.Name = "cb13";
+            this.cb13.Size = new System.Drawing.Size(46, 21);
+            this.cb13.TabIndex = 8;
+            this.cb13.Text = "13";
+            this.cb13.UseVisualStyleBackColor = true;
+            this.cb13.CheckedChanged += new System.EventHandler(this.cb13_CheckedChanged);
             // 
             // cb12
             // 
             this.cb12.AutoSize = true;
             this.cb12.Checked = true;
             this.cb12.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.cb12.Location = new System.Drawing.Point(17, 21);
+            this.cb12.Location = new System.Drawing.Point(6, 21);
             this.cb12.Name = "cb12";
             this.cb12.Size = new System.Drawing.Size(46, 21);
             this.cb12.TabIndex = 9;
             this.cb12.Text = "12";
             this.cb12.UseVisualStyleBackColor = true;
+            this.cb12.CheckedChanged += new System.EventHandler(this.cb12_CheckedChanged);
+            // 
+            // index
+            // 
+            this.index.HeaderText = "Index";
+            this.index.Name = "index";
+            this.index.ReadOnly = true;
+            // 
+            // name
+            // 
+            this.name.HeaderText = "Name";
+            this.name.Name = "name";
+            this.name.ReadOnly = true;
+            // 
+            // grade
+            // 
+            this.grade.HeaderText = "Grade";
+            this.grade.Name = "grade";
+            this.grade.ReadOnly = true;
+            // 
+            // sclass
+            // 
+            this.sclass.HeaderText = "Class";
+            this.sclass.Name = "sclass";
+            this.sclass.ReadOnly = true;
+            // 
+            // borrowed
+            // 
+            this.borrowed.HeaderText = "Borrowed";
+            this.borrowed.Name = "borrowed";
+            this.borrowed.ReadOnly = true;
             // 
             // MainForm
             // 
@@ -630,7 +678,7 @@
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.tabPage2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.cb13)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvStudent)).EndInit();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             this.groupBox4.ResumeLayout(false);
@@ -661,12 +709,12 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtBookTitle;
         private System.Windows.Forms.TabPage tabPage2;
-        private System.Windows.Forms.DataGridView cb13;
+        private System.Windows.Forms.DataGridView dgvStudent;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox txtStudentIndex;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox textBox5;
+        private System.Windows.Forms.TextBox txtStudentName;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.DataGridViewTextBoxColumn refCode;
         private System.Windows.Forms.DataGridViewTextBoxColumn title;
@@ -685,7 +733,12 @@
         private System.Windows.Forms.CheckedListBox clbClass;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.CheckBox cb12;
-        private System.Windows.Forms.CheckBox checkBox2;
+        private System.Windows.Forms.CheckBox cb13;
         private System.Windows.Forms.GroupBox groupBox4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn index;
+        private System.Windows.Forms.DataGridViewTextBoxColumn name;
+        private System.Windows.Forms.DataGridViewTextBoxColumn grade;
+        private System.Windows.Forms.DataGridViewTextBoxColumn sclass;
+        private System.Windows.Forms.DataGridViewTextBoxColumn borrowed;
     }
 }
