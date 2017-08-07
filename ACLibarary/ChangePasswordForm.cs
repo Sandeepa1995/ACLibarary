@@ -51,34 +51,10 @@ namespace ACLibarary
         Rectangle TopLeft { get { return new Rectangle(0, 0, _, _); } }
         Rectangle TopRight { get { return new Rectangle(this.ClientSize.Width - _, 0, _, _); } }
 
-        private void btnCloseMain_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
 
         Rectangle BottomLeft { get { return new Rectangle(0, this.ClientSize.Height - _, _, _); } }
         Rectangle BottomRight { get { return new Rectangle(this.ClientSize.Width - _, this.ClientSize.Height - _, _, _); } }
 
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-
-        private void btnSeePass_MouseDown(object sender, MouseEventArgs e)
-        {
-            txtPassCurrent.PasswordChar = '\0';
-            txtPassNew.PasswordChar = '\0';
-            txtPassNewRe.PasswordChar = '\0';
-
-        }
-
-        private void btnSeePass_MouseUp(object sender, MouseEventArgs e)
-        {
-            txtPassCurrent.PasswordChar = '*';
-            txtPassNew.PasswordChar = '*';
-            txtPassNewRe.PasswordChar = '*';
-        }
 
         private const int WM_NCHITTEST = 0x84;
         private const int HT_CLIENT = 0x1;
@@ -139,6 +115,32 @@ namespace ACLibarary
             else {
                 MessageBox.Show("The current password entered is incorrect.", "Incorrect password", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+
+        private void btnSeePass_MouseDown(object sender, MouseEventArgs e)
+        {
+            txtPassCurrent.PasswordChar = '\0';
+            txtPassNew.PasswordChar = '\0';
+            txtPassNewRe.PasswordChar = '\0';
+
+        }
+
+        private void btnSeePass_MouseUp(object sender, MouseEventArgs e)
+        {
+            txtPassCurrent.PasswordChar = '*';
+            txtPassNew.PasswordChar = '*';
+            txtPassNewRe.PasswordChar = '*';
+        }
+
+        private void btnCloseMain_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

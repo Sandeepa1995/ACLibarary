@@ -113,6 +113,7 @@ namespace ACLibarary
             }
             catch (CryptographicException ex) {
                 MessageBox.Show("Incorrect username or password!", "Invalid Login", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtPass.Text = "";
             }
                
             //}

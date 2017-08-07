@@ -61,10 +61,13 @@
             // 
             // btnAddBook
             // 
-            this.btnAddBook.Location = new System.Drawing.Point(348, 323);
+            this.btnAddBook.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnAddBook.Location = new System.Drawing.Point(53, 302);
             this.btnAddBook.Margin = new System.Windows.Forms.Padding(4);
             this.btnAddBook.Name = "btnAddBook";
-            this.btnAddBook.Size = new System.Drawing.Size(100, 28);
+            this.btnAddBook.Size = new System.Drawing.Size(395, 49);
             this.btnAddBook.TabIndex = 20;
             this.btnAddBook.Text = "Add Book";
             this.btnAddBook.UseVisualStyleBackColor = true;
@@ -72,6 +75,8 @@
             // 
             // label6
             // 
+            this.label6.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.label6.AutoSize = true;
             this.label6.Location = new System.Drawing.Point(50, 237);
             this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
@@ -82,6 +87,8 @@
             // 
             // label4
             // 
+            this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(50, 201);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
@@ -92,6 +99,8 @@
             // 
             // nUDAddQuan
             // 
+            this.nUDAddQuan.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.nUDAddQuan.Location = new System.Drawing.Point(151, 161);
             this.nUDAddQuan.Margin = new System.Windows.Forms.Padding(4);
             this.nUDAddQuan.Name = "nUDAddQuan";
@@ -105,6 +114,8 @@
             // 
             // label3
             // 
+            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(50, 163);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
@@ -115,6 +126,8 @@
             // 
             // txtAddAuth
             // 
+            this.txtAddAuth.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.txtAddAuth.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtAddAuth.Location = new System.Drawing.Point(151, 130);
             this.txtAddAuth.Margin = new System.Windows.Forms.Padding(4);
@@ -124,6 +137,8 @@
             // 
             // label2
             // 
+            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(50, 133);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
@@ -134,6 +149,8 @@
             // 
             // txtAddTitle
             // 
+            this.txtAddTitle.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.txtAddTitle.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtAddTitle.Location = new System.Drawing.Point(151, 93);
             this.txtAddTitle.Margin = new System.Windows.Forms.Padding(4);
@@ -143,6 +160,8 @@
             // 
             // label1
             // 
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(50, 96);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
@@ -153,6 +172,8 @@
             // 
             // rbAddMath
             // 
+            this.rbAddMath.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.rbAddMath.AutoSize = true;
             this.rbAddMath.Checked = true;
             this.rbAddMath.Location = new System.Drawing.Point(151, 199);
@@ -165,6 +186,8 @@
             // 
             // rbAddPhy
             // 
+            this.rbAddPhy.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.rbAddPhy.AutoSize = true;
             this.rbAddPhy.Location = new System.Drawing.Point(217, 199);
             this.rbAddPhy.Name = "rbAddPhy";
@@ -175,6 +198,8 @@
             // 
             // rbAddChem
             // 
+            this.rbAddChem.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.rbAddChem.AutoSize = true;
             this.rbAddChem.Location = new System.Drawing.Point(300, 199);
             this.rbAddChem.Name = "rbAddChem";
@@ -185,6 +210,8 @@
             // 
             // textBox1
             // 
+            this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.textBox1.Location = new System.Drawing.Point(151, 234);
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";

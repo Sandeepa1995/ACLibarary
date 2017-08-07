@@ -32,7 +32,6 @@
             this.menuMain = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addNewStudentToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.addNewBookToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.changeUserPasswordToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.btnCloseMain = new System.Windows.Forms.Button();
@@ -57,16 +56,24 @@
             this.label1 = new System.Windows.Forms.Label();
             this.txtBookTitle = new System.Windows.Forms.TextBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.cb13 = new System.Windows.Forms.DataGridView();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.r2 = new System.Windows.Forms.RadioButton();
-            this.r1 = new System.Windows.Forms.RadioButton();
             this.label4 = new System.Windows.Forms.Label();
             this.textBox4 = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.textBox5 = new System.Windows.Forms.TextBox();
             this.button3 = new System.Windows.Forms.Button();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.editToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.newBookToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.newStudentToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnDeleteStudent = new System.Windows.Forms.Button();
+            this.btnEditStudent = new System.Windows.Forms.Button();
+            this.label6 = new System.Windows.Forms.Label();
+            this.clbClass = new System.Windows.Forms.CheckedListBox();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.checkBox2 = new System.Windows.Forms.CheckBox();
+            this.cb12 = new System.Windows.Forms.CheckBox();
             this.menuMain.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -74,8 +81,9 @@
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.tabPage2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cb13)).BeginInit();
             this.groupBox3.SuspendLayout();
+            this.groupBox4.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuMain
@@ -87,7 +95,7 @@
             this.editToolStripMenuItem});
             this.menuMain.Location = new System.Drawing.Point(18, 12);
             this.menuMain.Name = "menuMain";
-            this.menuMain.Size = new System.Drawing.Size(241, 28);
+            this.menuMain.Size = new System.Drawing.Size(126, 28);
             this.menuMain.TabIndex = 0;
             this.menuMain.Text = "menuStrip1";
             // 
@@ -95,24 +103,20 @@
             // 
             this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.addNewStudentToolStripMenuItem,
-            this.addNewBookToolStripMenuItem});
+            this.editToolStripMenuItem1});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
             this.fileToolStripMenuItem.Size = new System.Drawing.Size(44, 24);
             this.fileToolStripMenuItem.Text = "File";
             // 
             // addNewStudentToolStripMenuItem
             // 
+            this.addNewStudentToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.newBookToolStripMenuItem,
+            this.newStudentToolStripMenuItem});
             this.addNewStudentToolStripMenuItem.Name = "addNewStudentToolStripMenuItem";
-            this.addNewStudentToolStripMenuItem.Size = new System.Drawing.Size(201, 26);
-            this.addNewStudentToolStripMenuItem.Text = "Add New Student";
+            this.addNewStudentToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
+            this.addNewStudentToolStripMenuItem.Text = "Add ";
             this.addNewStudentToolStripMenuItem.Click += new System.EventHandler(this.addNewStudentToolStripMenuItem_Click);
-            // 
-            // addNewBookToolStripMenuItem
-            // 
-            this.addNewBookToolStripMenuItem.Name = "addNewBookToolStripMenuItem";
-            this.addNewBookToolStripMenuItem.Size = new System.Drawing.Size(201, 26);
-            this.addNewBookToolStripMenuItem.Text = "Add New Book";
-            this.addNewBookToolStripMenuItem.Click += new System.EventHandler(this.addNewBookToolStripMenuItem_Click);
             // 
             // editToolStripMenuItem
             // 
@@ -125,6 +129,7 @@
             // 
             // changeUserPasswordToolStripMenuItem
             // 
+            this.changeUserPasswordToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("changeUserPasswordToolStripMenuItem.Image")));
             this.changeUserPasswordToolStripMenuItem.Name = "changeUserPasswordToolStripMenuItem";
             this.changeUserPasswordToolStripMenuItem.Size = new System.Drawing.Size(233, 26);
             this.changeUserPasswordToolStripMenuItem.Text = "Change User Password";
@@ -158,7 +163,9 @@
             // 
             // tabControl1
             // 
-            this.tabControl1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.tabControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Location = new System.Drawing.Point(27, 47);
@@ -371,7 +378,9 @@
             // tabPage2
             // 
             this.tabPage2.BackColor = System.Drawing.SystemColors.Control;
-            this.tabPage2.Controls.Add(this.dataGridView2);
+            this.tabPage2.Controls.Add(this.btnEditStudent);
+            this.tabPage2.Controls.Add(this.btnDeleteStudent);
+            this.tabPage2.Controls.Add(this.cb13);
             this.tabPage2.Controls.Add(this.groupBox3);
             this.tabPage2.Location = new System.Drawing.Point(4, 25);
             this.tabPage2.Margin = new System.Windows.Forms.Padding(4);
@@ -381,24 +390,31 @@
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Students";
             // 
-            // dataGridView2
+            // cb13
             // 
-            this.dataGridView2.AllowUserToAddRows = false;
-            this.dataGridView2.AllowUserToDeleteRows = false;
-            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Location = new System.Drawing.Point(7, 79);
-            this.dataGridView2.Margin = new System.Windows.Forms.Padding(4);
-            this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.ReadOnly = true;
-            this.dataGridView2.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            this.dataGridView2.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView2.Size = new System.Drawing.Size(741, 357);
-            this.dataGridView2.TabIndex = 5;
+            this.cb13.AllowUserToAddRows = false;
+            this.cb13.AllowUserToDeleteRows = false;
+            this.cb13.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.cb13.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.cb13.Location = new System.Drawing.Point(11, 106);
+            this.cb13.Margin = new System.Windows.Forms.Padding(4);
+            this.cb13.Name = "cb13";
+            this.cb13.ReadOnly = true;
+            this.cb13.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            this.cb13.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.cb13.Size = new System.Drawing.Size(759, 283);
+            this.cb13.TabIndex = 5;
             // 
             // groupBox3
             // 
-            this.groupBox3.Controls.Add(this.r2);
-            this.groupBox3.Controls.Add(this.r1);
+            this.groupBox3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox3.Controls.Add(this.groupBox4);
+            this.groupBox3.Controls.Add(this.clbClass);
+            this.groupBox3.Controls.Add(this.label6);
             this.groupBox3.Controls.Add(this.label4);
             this.groupBox3.Controls.Add(this.textBox4);
             this.groupBox3.Controls.Add(this.label5);
@@ -407,48 +423,28 @@
             this.groupBox3.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Padding = new System.Windows.Forms.Padding(4);
-            this.groupBox3.Size = new System.Drawing.Size(737, 64);
+            this.groupBox3.Size = new System.Drawing.Size(755, 91);
             this.groupBox3.TabIndex = 2;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Search";
             // 
-            // r2
-            // 
-            this.r2.AutoSize = true;
-            this.r2.Location = new System.Drawing.Point(319, 28);
-            this.r2.Margin = new System.Windows.Forms.Padding(4);
-            this.r2.Name = "r2";
-            this.r2.Size = new System.Drawing.Size(45, 21);
-            this.r2.TabIndex = 9;
-            this.r2.Text = "13";
-            this.r2.UseVisualStyleBackColor = false;
-            // 
-            // r1
-            // 
-            this.r1.AutoSize = true;
-            this.r1.Checked = true;
-            this.r1.Location = new System.Drawing.Point(227, 28);
-            this.r1.Margin = new System.Windows.Forms.Padding(4);
-            this.r1.Name = "r1";
-            this.r1.Size = new System.Drawing.Size(45, 21);
-            this.r1.TabIndex = 8;
-            this.r1.TabStop = true;
-            this.r1.Text = "12";
-            this.r1.UseVisualStyleBackColor = false;
-            // 
             // label4
             // 
+            this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(30, 30);
+            this.label4.Location = new System.Drawing.Point(19, 58);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(41, 17);
+            this.label4.Size = new System.Drawing.Size(49, 17);
             this.label4.TabIndex = 4;
-            this.label4.Text = "Index";
+            this.label4.Text = "Index :";
             // 
             // textBox4
             // 
-            this.textBox4.Location = new System.Drawing.Point(79, 28);
+            this.textBox4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBox4.Location = new System.Drawing.Point(80, 55);
             this.textBox4.Margin = new System.Windows.Forms.Padding(4);
             this.textBox4.Name = "textBox4";
             this.textBox4.Size = new System.Drawing.Size(123, 22);
@@ -456,17 +452,21 @@
             // 
             // label5
             // 
+            this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(389, 30);
+            this.label5.Location = new System.Drawing.Point(19, 25);
             this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(45, 17);
+            this.label5.Size = new System.Drawing.Size(53, 17);
             this.label5.TabIndex = 2;
-            this.label5.Text = "Name";
+            this.label5.Text = "Name :";
             // 
             // textBox5
             // 
-            this.textBox5.Location = new System.Drawing.Point(442, 26);
+            this.textBox5.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBox5.Location = new System.Drawing.Point(80, 22);
             this.textBox5.Margin = new System.Windows.Forms.Padding(4);
             this.textBox5.Name = "textBox5";
             this.textBox5.Size = new System.Drawing.Size(287, 22);
@@ -494,6 +494,113 @@
             this.checkBox1.TabIndex = 6;
             this.checkBox1.Text = "checkBox1";
             this.checkBox1.UseVisualStyleBackColor = true;
+            // 
+            // editToolStripMenuItem1
+            // 
+            this.editToolStripMenuItem1.Name = "editToolStripMenuItem1";
+            this.editToolStripMenuItem1.Size = new System.Drawing.Size(181, 26);
+            this.editToolStripMenuItem1.Text = "Edit";
+            this.editToolStripMenuItem1.Click += new System.EventHandler(this.editToolStripMenuItem1_Click);
+            // 
+            // newBookToolStripMenuItem
+            // 
+            this.newBookToolStripMenuItem.Name = "newBookToolStripMenuItem";
+            this.newBookToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
+            this.newBookToolStripMenuItem.Text = "New Book";
+            this.newBookToolStripMenuItem.Click += new System.EventHandler(this.newBookToolStripMenuItem_Click);
+            // 
+            // newStudentToolStripMenuItem
+            // 
+            this.newStudentToolStripMenuItem.Name = "newStudentToolStripMenuItem";
+            this.newStudentToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
+            this.newStudentToolStripMenuItem.Text = "New Student";
+            this.newStudentToolStripMenuItem.Click += new System.EventHandler(this.newStudentToolStripMenuItem_Click);
+            // 
+            // btnDeleteStudent
+            // 
+            this.btnDeleteStudent.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnDeleteStudent.Location = new System.Drawing.Point(402, 396);
+            this.btnDeleteStudent.Name = "btnDeleteStudent";
+            this.btnDeleteStudent.Size = new System.Drawing.Size(364, 47);
+            this.btnDeleteStudent.TabIndex = 6;
+            this.btnDeleteStudent.Text = "Delete Student";
+            this.btnDeleteStudent.UseVisualStyleBackColor = true;
+            // 
+            // btnEditStudent
+            // 
+            this.btnEditStudent.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnEditStudent.Location = new System.Drawing.Point(7, 396);
+            this.btnEditStudent.Name = "btnEditStudent";
+            this.btnEditStudent.Size = new System.Drawing.Size(378, 47);
+            this.btnEditStudent.TabIndex = 7;
+            this.btnEditStudent.Text = "Edit Student";
+            this.btnEditStudent.UseVisualStyleBackColor = true;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(625, 27);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(50, 17);
+            this.label6.TabIndex = 11;
+            this.label6.Text = "Class :";
+            // 
+            // clbClass
+            // 
+            this.clbClass.CheckOnClick = true;
+            this.clbClass.FormattingEnabled = true;
+            this.clbClass.Items.AddRange(new object[] {
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "E"});
+            this.clbClass.Location = new System.Drawing.Point(681, 12);
+            this.clbClass.MinimumSize = new System.Drawing.Size(0, 40);
+            this.clbClass.Name = "clbClass";
+            this.clbClass.Size = new System.Drawing.Size(67, 72);
+            this.clbClass.TabIndex = 12;
+            this.clbClass.SelectedIndexChanged += new System.EventHandler(this.clbClass_SelectedIndexChanged);
+            // 
+            // groupBox4
+            // 
+            this.groupBox4.Controls.Add(this.cb12);
+            this.groupBox4.Controls.Add(this.checkBox2);
+            this.groupBox4.Location = new System.Drawing.Point(417, 17);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(164, 52);
+            this.groupBox4.TabIndex = 8;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "Grade";
+            // 
+            // checkBox2
+            // 
+            this.checkBox2.AutoSize = true;
+            this.checkBox2.Checked = true;
+            this.checkBox2.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBox2.Location = new System.Drawing.Point(112, 21);
+            this.checkBox2.Name = "checkBox2";
+            this.checkBox2.Size = new System.Drawing.Size(46, 21);
+            this.checkBox2.TabIndex = 8;
+            this.checkBox2.Text = "13";
+            this.checkBox2.UseVisualStyleBackColor = true;
+            // 
+            // cb12
+            // 
+            this.cb12.AutoSize = true;
+            this.cb12.Checked = true;
+            this.cb12.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cb12.Location = new System.Drawing.Point(17, 21);
+            this.cb12.Name = "cb12";
+            this.cb12.Size = new System.Drawing.Size(46, 21);
+            this.cb12.TabIndex = 9;
+            this.cb12.Text = "12";
+            this.cb12.UseVisualStyleBackColor = true;
             // 
             // MainForm
             // 
@@ -523,9 +630,11 @@
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.tabPage2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cb13)).EndInit();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
+            this.groupBox4.ResumeLayout(false);
+            this.groupBox4.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -539,7 +648,6 @@
         private System.Windows.Forms.Button btnCloseMain;
         private System.Windows.Forms.Button btnMinimizeMain;
         private System.Windows.Forms.ToolStripMenuItem editToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem addNewBookToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem changeUserPasswordToolStripMenuItem;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1;
@@ -553,10 +661,8 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtBookTitle;
         private System.Windows.Forms.TabPage tabPage2;
-        private System.Windows.Forms.DataGridView dataGridView2;
+        private System.Windows.Forms.DataGridView cb13;
         private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.RadioButton r2;
-        private System.Windows.Forms.RadioButton r1;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox textBox4;
         private System.Windows.Forms.Label label5;
@@ -571,5 +677,15 @@
         private System.Windows.Forms.CheckBox checkBox1;
         private System.Windows.Forms.CheckBox chkChem;
         private System.Windows.Forms.CheckBox chkPhysics;
+        private System.Windows.Forms.ToolStripMenuItem newBookToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem newStudentToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem editToolStripMenuItem1;
+        private System.Windows.Forms.Button btnEditStudent;
+        private System.Windows.Forms.Button btnDeleteStudent;
+        private System.Windows.Forms.CheckedListBox clbClass;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.CheckBox cb12;
+        private System.Windows.Forms.CheckBox checkBox2;
+        private System.Windows.Forms.GroupBox groupBox4;
     }
 }

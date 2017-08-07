@@ -117,56 +117,7 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <metadata name="menuMain.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
-  </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="changeUserPasswordToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAAIpSURBVEhLYxiRgKkzn83vxCLuWQ+28uy4to539coOjiIf
-        ewYRqDz5IMqLQ/7lXt6T7w/x/UPHHw7xflzZxR0DVUo6sDdmEHl3iPc+yLCPR/j/w+iPB/n/f9jPD2Z/
-        OMz/b3k7dxRUC2ng4iqeucgGg129VeDfgwn82y+08i/5tJb/C8QS3vduFgxCUG3EATMzBr73h/l+gAxF
-        xvsaeOqhShgaAzgsPxzgB4svaubMhgoTB7LCWOzAwYHmg+YMdieoEgYPoCOAQfQdJH5uOc9iqDBxoDCW
-        zQubBW8P8N1ozmR3yQtjMb27mWc7TPz+Ot4dUK3EgfwgDjuQRmLxg+W826FaCQNjYwauR9t592LzAboY
-        jL2vhacbqp0wCLRlkPxwiO8JSCMx+MNO/r/5rlwGUO2EwepurnhgOv/zYS8krYMMweZqMHsv//9LnfzT
-        oFoJA5jhnxYJ/v+wSQCYWyHJEN2CDweBlm8S+H+jh3+pMQMDK1Q7fgAz/ONCwX8fNwr8/7gHaNgiwZ8f
-        D/A9fLmV/9SnhYJ3Pi4V/P1pieD7J5MEdvRFcfpDtRIGyIZ/2AB0+W6gC+cK/pyTxhnga84gDox44lyJ
-        DSAHC8jl73bxP78/mf/A1CTOAKgS8gG2YDnVxjcfKk0Z0NJiYEMYzv9h+2TOjMdTBXZNTOD0hSqhDNjL
-        M3DAggUU5tXA3AuVog6wkGHg/LBR4C84QucJ/myOQBRko4CGgIEBAEZFvv7+CdaOAAAAAElFTkSuQmCC
-</value>
-  </data>
-  <metadata name="refCode.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="title.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="type.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="author.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="holder.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <data name="button3.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAS
-        dAAAEnQB3mYfeAAAAldJREFUWEfVV7tqG0EUXTC4TGMMdiA4hUkhO0haPbBJ486QIp1wky8IhiB9Qlym
-        yg+k8if4C4Tb+BFI4aRRb1Bl0gRknzM+a++Or2dnZRHhA4dd3bnn3tmZuTOj5Nmh0+mstNvtD61Wa5Cm
-        6ReS77SxTW6zRbfbfYEkfSQ7xXMCXj/CiXz61Eg+PXq93gICfkbAcS5JLMfUMobCVUOz2XyJIEMv6DQc
-        MpbCxgFz+QbCkRfoKRwxpsKHoS+fZfKMo9KR4HzBMXrYMcc/8ew2Go1lPPfx+1++3eAwuCa04CyhSfin
-        kjrA9t338ckcci9CpVZptWNI1yR3gO2r72NwbJYoGvqeYwwPa7XaIvVYZBv4ukvDx+LAJc0DYm4glnOQ
-        SnqOZ9n853mmtLfgFgpjaIebNbljrip9kmhvtxx9UngMfuKQQ/dK2j+eXympU/r4+VfyLby/k9QBtre+
-        bwTv1wEC8ESznHzeTRMqYFtyB8Sosgb4MQeSVurAHaFpSc41tGT5hFjoAAxVS/AqKz8Cv9977TG8n4IK
-        i9ARvT+S1AG/v1l+IRYW4RRluC+pAzpwYfiEWCxDAobojQgLcF2ypF6vv4at6h5S3IgIGGNL8VISB3Rm
-        z/Ir4cOtuMJh9EsSB3TgY64tZiTsw4jA15Uex/D5y/NfkuwOsQN7iufvvK9F5pD0IWIvJAjyA9zVVrzJ
-        oOCJ5esxfCEhMKTzu5JlQFnO71KaQSMxn2t5Bs4X5xdB/v8fkzxUogPwDAyVGtvoM3i01J4KfNWqzg7+
-        OT0g+U4b2+T2XJAkN0969lNGCdAFAAAAAElFTkSuQmCC
-</value>
-  </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         AAABAAkAAAAAAAEAIAAiEgAAlgAAAICAAAABACAAKAgBALgSAABgYAAAAQAgAKiUAADgGgEASEgAAAEA

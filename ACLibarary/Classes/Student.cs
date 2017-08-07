@@ -15,11 +15,11 @@ namespace ACLibarary.Classes
         [JsonProperty(PropertyName = "index")]
         public string index;
         [JsonProperty(PropertyName = "grade")]
-        public int year;
+        public string grade;
         [JsonProperty(PropertyName = "cls")]
-        public int cls;
+        public string cls;
         [JsonProperty(PropertyName = "borrowed")]
-        public ArrayList borrowed;
+        public string borrowed;
 
         //public Student(string name, string index, int year, int cls) {
         //    this.name = name;

@@ -34,6 +34,8 @@ namespace ACLibarary
         private void Main_Load(object sender, EventArgs e)
         {
             LoadAllBooks();
+            for (int i = 0; i < clbClass.Items.Count; i++)
+                clbClass.SetItemChecked(i, true);
         }
 
         protected override void OnPaint(PaintEventArgs e) // you can safely omit this method if you want
@@ -123,16 +125,32 @@ namespace ACLibarary
             loadSelectedType();
         }
 
-        private void addNewBookToolStripMenuItem_Click(object sender, EventArgs e)
+        private void changeUserPasswordToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ChangePasswordForm cPF = new ChangePasswordForm();
+            cPF.ShowDialog();
+        }
+
+        private void editToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void newBookToolStripMenuItem_Click(object sender, EventArgs e)
         {
             AddBookForm aBF = new AddBookForm();
             aBF.ShowDialog();
         }
 
-        private void changeUserPasswordToolStripMenuItem_Click(object sender, EventArgs e)
+        private void newStudentToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            ChangePasswordForm cPF = new ChangePasswordForm();
-            cPF.ShowDialog();
+            AddStudentForm aSF = new AddStudentForm();
+            aSF.ShowDialog();
+        }
+
+        private void clbClass_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
 
         private void chkChem_CheckedChanged(object sender, EventArgs e)
