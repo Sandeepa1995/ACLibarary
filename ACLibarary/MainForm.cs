@@ -206,6 +206,21 @@ namespace ACLibarary
             loadSelectedStudents();
         }
 
+        private void btnEditStudent_Click(object sender, EventArgs e)
+        {
+            if (dgvStudent.SelectedRows.Count > 0)
+            {
+                int selectedrowindex = dgvStudent.SelectedCells[0].RowIndex;
+
+                DataGridViewRow selectedRow = dgvStudent.Rows[selectedrowindex];
+
+                Holder.editStudent = ( Convert.ToString(selectedRow.Cells["Index"].Value));
+
+                EditStudentForm eSF = new EditStudentForm();
+                eSF.ShowDialog();
+            }
+        }
+
         private void txtBookAuth_TextChanged(object sender, EventArgs e)
         {
             loadSelectedType();

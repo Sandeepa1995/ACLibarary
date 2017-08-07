@@ -553,6 +553,7 @@
             this.btnEditStudent.TabIndex = 7;
             this.btnEditStudent.Text = "Edit Student";
             this.btnEditStudent.UseVisualStyleBackColor = true;
+            this.btnEditStudent.Click += new System.EventHandler(this.btnEditStudent_Click);
             // 
             // label6
             // 
