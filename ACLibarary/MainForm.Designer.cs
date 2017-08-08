@@ -32,6 +32,9 @@
             this.menuMain = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addNewStudentToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.newBookToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.newStudentToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.editToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.changeUserPasswordToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.btnCloseMain = new System.Windows.Forms.Button();
@@ -56,29 +59,27 @@
             this.label1 = new System.Windows.Forms.Label();
             this.txtBookTitle = new System.Windows.Forms.TextBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.btnEditStudent = new System.Windows.Forms.Button();
+            this.btnDeleteStudent = new System.Windows.Forms.Button();
             this.dgvStudent = new System.Windows.Forms.DataGridView();
+            this.index = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.name = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.grade = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.sclass = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.borrowed = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.cb12 = new System.Windows.Forms.CheckBox();
+            this.cb13 = new System.Windows.Forms.CheckBox();
+            this.clbClass = new System.Windows.Forms.CheckedListBox();
+            this.label6 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.txtStudentIndex = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.txtStudentName = new System.Windows.Forms.TextBox();
             this.button3 = new System.Windows.Forms.Button();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
-            this.editToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.newBookToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.newStudentToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.btnDeleteStudent = new System.Windows.Forms.Button();
-            this.btnEditStudent = new System.Windows.Forms.Button();
-            this.label6 = new System.Windows.Forms.Label();
-            this.clbClass = new System.Windows.Forms.CheckedListBox();
-            this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.cb13 = new System.Windows.Forms.CheckBox();
-            this.cb12 = new System.Windows.Forms.CheckBox();
-            this.index = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.name = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.grade = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.sclass = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.borrowed = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnRefresh = new System.Windows.Forms.Button();
             this.menuMain.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -119,9 +120,30 @@
             this.newBookToolStripMenuItem,
             this.newStudentToolStripMenuItem});
             this.addNewStudentToolStripMenuItem.Name = "addNewStudentToolStripMenuItem";
-            this.addNewStudentToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
+            this.addNewStudentToolStripMenuItem.Size = new System.Drawing.Size(116, 26);
             this.addNewStudentToolStripMenuItem.Text = "Add ";
             this.addNewStudentToolStripMenuItem.Click += new System.EventHandler(this.addNewStudentToolStripMenuItem_Click);
+            // 
+            // newBookToolStripMenuItem
+            // 
+            this.newBookToolStripMenuItem.Name = "newBookToolStripMenuItem";
+            this.newBookToolStripMenuItem.Size = new System.Drawing.Size(169, 26);
+            this.newBookToolStripMenuItem.Text = "New Book";
+            this.newBookToolStripMenuItem.Click += new System.EventHandler(this.newBookToolStripMenuItem_Click);
+            // 
+            // newStudentToolStripMenuItem
+            // 
+            this.newStudentToolStripMenuItem.Name = "newStudentToolStripMenuItem";
+            this.newStudentToolStripMenuItem.Size = new System.Drawing.Size(169, 26);
+            this.newStudentToolStripMenuItem.Text = "New Student";
+            this.newStudentToolStripMenuItem.Click += new System.EventHandler(this.newStudentToolStripMenuItem_Click);
+            // 
+            // editToolStripMenuItem1
+            // 
+            this.editToolStripMenuItem1.Name = "editToolStripMenuItem1";
+            this.editToolStripMenuItem1.Size = new System.Drawing.Size(116, 26);
+            this.editToolStripMenuItem1.Text = "Edit";
+            this.editToolStripMenuItem1.Click += new System.EventHandler(this.editToolStripMenuItem1_Click);
             // 
             // editToolStripMenuItem
             // 
@@ -395,6 +417,30 @@
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Students";
             // 
+            // btnEditStudent
+            // 
+            this.btnEditStudent.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnEditStudent.Location = new System.Drawing.Point(7, 396);
+            this.btnEditStudent.Name = "btnEditStudent";
+            this.btnEditStudent.Size = new System.Drawing.Size(378, 47);
+            this.btnEditStudent.TabIndex = 7;
+            this.btnEditStudent.Text = "Edit Student";
+            this.btnEditStudent.UseVisualStyleBackColor = true;
+            this.btnEditStudent.Click += new System.EventHandler(this.btnEditStudent_Click);
+            // 
+            // btnDeleteStudent
+            // 
+            this.btnDeleteStudent.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnDeleteStudent.Location = new System.Drawing.Point(402, 396);
+            this.btnDeleteStudent.Name = "btnDeleteStudent";
+            this.btnDeleteStudent.Size = new System.Drawing.Size(364, 47);
+            this.btnDeleteStudent.TabIndex = 6;
+            this.btnDeleteStudent.Text = "Delete Student";
+            this.btnDeleteStudent.UseVisualStyleBackColor = true;
+            this.btnDeleteStudent.Click += new System.EventHandler(this.btnDeleteStudent_Click);
+            // 
             // dgvStudent
             // 
             this.dgvStudent.AllowUserToAddRows = false;
@@ -421,6 +467,36 @@
             this.dgvStudent.TabIndex = 5;
             this.dgvStudent.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.cb13_CellContentClick);
             // 
+            // index
+            // 
+            this.index.HeaderText = "Index";
+            this.index.Name = "index";
+            this.index.ReadOnly = true;
+            // 
+            // name
+            // 
+            this.name.HeaderText = "Name";
+            this.name.Name = "name";
+            this.name.ReadOnly = true;
+            // 
+            // grade
+            // 
+            this.grade.HeaderText = "Grade";
+            this.grade.Name = "grade";
+            this.grade.ReadOnly = true;
+            // 
+            // sclass
+            // 
+            this.sclass.HeaderText = "Class";
+            this.sclass.Name = "sclass";
+            this.sclass.ReadOnly = true;
+            // 
+            // borrowed
+            // 
+            this.borrowed.HeaderText = "Borrowed";
+            this.borrowed.Name = "borrowed";
+            this.borrowed.ReadOnly = true;
+            // 
             // groupBox3
             // 
             this.groupBox3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -441,6 +517,72 @@
             this.groupBox3.TabIndex = 2;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Search";
+            // 
+            // groupBox4
+            // 
+            this.groupBox4.Controls.Add(this.cb12);
+            this.groupBox4.Controls.Add(this.cb13);
+            this.groupBox4.Location = new System.Drawing.Point(417, 17);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(164, 52);
+            this.groupBox4.TabIndex = 8;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "Grade";
+            // 
+            // cb12
+            // 
+            this.cb12.AutoSize = true;
+            this.cb12.Checked = true;
+            this.cb12.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cb12.Location = new System.Drawing.Point(6, 21);
+            this.cb12.Name = "cb12";
+            this.cb12.Size = new System.Drawing.Size(46, 21);
+            this.cb12.TabIndex = 9;
+            this.cb12.Text = "12";
+            this.cb12.UseVisualStyleBackColor = true;
+            this.cb12.CheckedChanged += new System.EventHandler(this.cb12_CheckedChanged);
+            // 
+            // cb13
+            // 
+            this.cb13.AutoSize = true;
+            this.cb13.Checked = true;
+            this.cb13.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cb13.Location = new System.Drawing.Point(112, 21);
+            this.cb13.Name = "cb13";
+            this.cb13.Size = new System.Drawing.Size(46, 21);
+            this.cb13.TabIndex = 8;
+            this.cb13.Text = "13";
+            this.cb13.UseVisualStyleBackColor = true;
+            this.cb13.CheckedChanged += new System.EventHandler(this.cb13_CheckedChanged);
+            // 
+            // clbClass
+            // 
+            this.clbClass.CheckOnClick = true;
+            this.clbClass.FormattingEnabled = true;
+            this.clbClass.Items.AddRange(new object[] {
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "E"});
+            this.clbClass.Location = new System.Drawing.Point(681, 12);
+            this.clbClass.MinimumSize = new System.Drawing.Size(4, 40);
+            this.clbClass.Name = "clbClass";
+            this.clbClass.Size = new System.Drawing.Size(67, 72);
+            this.clbClass.TabIndex = 12;
+            this.clbClass.SelectedIndexChanged += new System.EventHandler(this.clbClass_SelectedIndexChanged);
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(625, 27);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(50, 17);
+            this.label6.TabIndex = 11;
+            this.label6.Text = "Class :";
             // 
             // label4
             // 
@@ -511,152 +653,25 @@
             this.checkBox1.Text = "checkBox1";
             this.checkBox1.UseVisualStyleBackColor = true;
             // 
-            // editToolStripMenuItem1
+            // btnRefresh
             // 
-            this.editToolStripMenuItem1.Name = "editToolStripMenuItem1";
-            this.editToolStripMenuItem1.Size = new System.Drawing.Size(181, 26);
-            this.editToolStripMenuItem1.Text = "Edit";
-            this.editToolStripMenuItem1.Click += new System.EventHandler(this.editToolStripMenuItem1_Click);
-            // 
-            // newBookToolStripMenuItem
-            // 
-            this.newBookToolStripMenuItem.Name = "newBookToolStripMenuItem";
-            this.newBookToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
-            this.newBookToolStripMenuItem.Text = "New Book";
-            this.newBookToolStripMenuItem.Click += new System.EventHandler(this.newBookToolStripMenuItem_Click);
-            // 
-            // newStudentToolStripMenuItem
-            // 
-            this.newStudentToolStripMenuItem.Name = "newStudentToolStripMenuItem";
-            this.newStudentToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
-            this.newStudentToolStripMenuItem.Text = "New Student";
-            this.newStudentToolStripMenuItem.Click += new System.EventHandler(this.newStudentToolStripMenuItem_Click);
-            // 
-            // btnDeleteStudent
-            // 
-            this.btnDeleteStudent.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnDeleteStudent.Location = new System.Drawing.Point(402, 396);
-            this.btnDeleteStudent.Name = "btnDeleteStudent";
-            this.btnDeleteStudent.Size = new System.Drawing.Size(364, 47);
-            this.btnDeleteStudent.TabIndex = 6;
-            this.btnDeleteStudent.Text = "Delete Student";
-            this.btnDeleteStudent.UseVisualStyleBackColor = true;
-            this.btnDeleteStudent.Click += new System.EventHandler(this.btnDeleteStudent_Click);
-            // 
-            // btnEditStudent
-            // 
-            this.btnEditStudent.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnEditStudent.Location = new System.Drawing.Point(7, 396);
-            this.btnEditStudent.Name = "btnEditStudent";
-            this.btnEditStudent.Size = new System.Drawing.Size(378, 47);
-            this.btnEditStudent.TabIndex = 7;
-            this.btnEditStudent.Text = "Edit Student";
-            this.btnEditStudent.UseVisualStyleBackColor = true;
-            this.btnEditStudent.Click += new System.EventHandler(this.btnEditStudent_Click);
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(625, 27);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(50, 17);
-            this.label6.TabIndex = 11;
-            this.label6.Text = "Class :";
-            // 
-            // clbClass
-            // 
-            this.clbClass.CheckOnClick = true;
-            this.clbClass.FormattingEnabled = true;
-            this.clbClass.Items.AddRange(new object[] {
-            "1",
-            "2",
-            "3",
-            "4",
-            "5",
-            "6",
-            "7",
-            "E"});
-            this.clbClass.Location = new System.Drawing.Point(681, 12);
-            this.clbClass.MinimumSize = new System.Drawing.Size(0, 40);
-            this.clbClass.Name = "clbClass";
-            this.clbClass.Size = new System.Drawing.Size(67, 72);
-            this.clbClass.TabIndex = 12;
-            this.clbClass.SelectedIndexChanged += new System.EventHandler(this.clbClass_SelectedIndexChanged);
-            // 
-            // groupBox4
-            // 
-            this.groupBox4.Controls.Add(this.cb12);
-            this.groupBox4.Controls.Add(this.cb13);
-            this.groupBox4.Location = new System.Drawing.Point(417, 17);
-            this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(164, 52);
-            this.groupBox4.TabIndex = 8;
-            this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "Grade";
-            // 
-            // cb13
-            // 
-            this.cb13.AutoSize = true;
-            this.cb13.Checked = true;
-            this.cb13.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.cb13.Location = new System.Drawing.Point(112, 21);
-            this.cb13.Name = "cb13";
-            this.cb13.Size = new System.Drawing.Size(46, 21);
-            this.cb13.TabIndex = 8;
-            this.cb13.Text = "13";
-            this.cb13.UseVisualStyleBackColor = true;
-            this.cb13.CheckedChanged += new System.EventHandler(this.cb13_CheckedChanged);
-            // 
-            // cb12
-            // 
-            this.cb12.AutoSize = true;
-            this.cb12.Checked = true;
-            this.cb12.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.cb12.Location = new System.Drawing.Point(6, 21);
-            this.cb12.Name = "cb12";
-            this.cb12.Size = new System.Drawing.Size(46, 21);
-            this.cb12.TabIndex = 9;
-            this.cb12.Text = "12";
-            this.cb12.UseVisualStyleBackColor = true;
-            this.cb12.CheckedChanged += new System.EventHandler(this.cb12_CheckedChanged);
-            // 
-            // index
-            // 
-            this.index.HeaderText = "Index";
-            this.index.Name = "index";
-            this.index.ReadOnly = true;
-            // 
-            // name
-            // 
-            this.name.HeaderText = "Name";
-            this.name.Name = "name";
-            this.name.ReadOnly = true;
-            // 
-            // grade
-            // 
-            this.grade.HeaderText = "Grade";
-            this.grade.Name = "grade";
-            this.grade.ReadOnly = true;
-            // 
-            // sclass
-            // 
-            this.sclass.HeaderText = "Class";
-            this.sclass.Name = "sclass";
-            this.sclass.ReadOnly = true;
-            // 
-            // borrowed
-            // 
-            this.borrowed.HeaderText = "Borrowed";
-            this.borrowed.Name = "borrowed";
-            this.borrowed.ReadOnly = true;
+            this.btnRefresh.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnRefresh.BackgroundImage")));
+            this.btnRefresh.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnRefresh.FlatAppearance.BorderSize = 0;
+            this.btnRefresh.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRefresh.Location = new System.Drawing.Point(709, 17);
+            this.btnRefresh.Name = "btnRefresh";
+            this.btnRefresh.Size = new System.Drawing.Size(24, 23);
+            this.btnRefresh.TabIndex = 7;
+            this.btnRefresh.UseVisualStyleBackColor = true;
+            this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(831, 568);
+            this.Controls.Add(this.btnRefresh);
             this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.tabControl1);
@@ -742,5 +757,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn grade;
         private System.Windows.Forms.DataGridViewTextBoxColumn sclass;
         private System.Windows.Forms.DataGridViewTextBoxColumn borrowed;
+        private System.Windows.Forms.Button btnRefresh;
     }
 }

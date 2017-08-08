@@ -13,10 +13,14 @@ namespace ACLibarary.Classes
         public string title;
         [JsonProperty(PropertyName = "author")]
         public string author;
-        [JsonProperty(PropertyName = "refCode")]
-        public string refCode;
+        [JsonProperty(PropertyName = "stream")]
+        public string stream;
+        [JsonProperty(PropertyName = "subject")]
+        public string subject;
         [JsonProperty(PropertyName = "type")]
         public string type;
+        [JsonProperty(PropertyName = "refCode")]
+        public string refCode;
         [JsonProperty(PropertyName = "holder")]
         public string holder;        
     }

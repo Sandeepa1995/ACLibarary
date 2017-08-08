@@ -257,6 +257,28 @@ namespace ACLibarary
             
         }
 
+        private void btnRefresh_Click(object sender, EventArgs e)
+        {
+            txtBookAuth.Text = "";
+            txtBookCode.Text = "";
+            txtBookTitle.Text = "";
+            txtStudentIndex.Text = "";
+            txtStudentName.Text = "";
+            cb12.Checked = true;
+            cb13.Checked = true;
+            chkChem.Checked = true;
+            chkMath.Checked = true;
+            chkPhysics.Checked = true;
+            LoadAllBooks();
+            LoadAllStudents();
+            dgvStudent.Rows.Clear();
+            dgvStudent.Refresh();
+            dgvBooks.Rows.Clear();
+            dgvBooks.Refresh();
+            for (int i = 0; i < clbClass.Items.Count; i++)
+                clbClass.SetItemChecked(i, true);
+        }
+
         private void txtBookAuth_TextChanged(object sender, EventArgs e)
         {
             loadSelectedType();
@@ -293,11 +315,14 @@ namespace ACLibarary
         public async void LoadAllBooks() {
             FirebaseResponse res = await _client.GetAsync("books/");
             IDictionary<string, Book> bookList = res.ResultAs<IDictionary<string, Book>>();
-
-            //List<Book> bookList = res.ResultAs<List<Book>>();
-            foreach (KeyValuePair<string, Book> bok in bookList) {
-                //MessageBox.Show(bok.Value.title);
-                this.dgvBooks.Rows.Add(bok.Value.refCode, bok.Value.title, bok.Value.type, bok.Value.author, bok.Value.holder);
+            if (bookList != null)
+            {
+                //List<Book> bookList = res.ResultAs<List<Book>>();
+                foreach (KeyValuePair<string, Book> bok in bookList)
+                {
+                    //MessageBox.Show(bok.Value.title);
+                    this.dgvBooks.Rows.Add(bok.Value.refCode, bok.Value.title, bok.Value.type, bok.Value.author, bok.Value.holder);
+                }
             }
 
         }
