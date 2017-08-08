@@ -310,6 +310,102 @@ namespace ACLibarary
             loadSelectedType();
         }
 
+        private void btnLend_Click(object sender, EventArgs e)
+        {
+            if (dgvBooks.SelectedRows.Count > 0)
+            {
+                int selectedrowindex = dgvBooks.SelectedCells[0].RowIndex;
+
+                DataGridViewRow selectedRow = dgvBooks.Rows[selectedrowindex];
+
+                Holder.lendBook = (Convert.ToString(selectedRow.Cells["refCode"].Value));
+                Holder.lendAuthor = (Convert.ToString(selectedRow.Cells["author"].Value));
+                Holder.lendTitle = (Convert.ToString(selectedRow.Cells["title"].Value));
+
+                if (Convert.ToString(selectedRow.Cells["Holder"].Value) == "Library")
+                {
+                    LendBookForm lBF = new LendBookForm();
+                    lBF.ShowDialog();
+                }
+                else {
+                    MessageBox.Show("Book is allready lent out.", "Faliure", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+
+            
+        }
+
+        private void dgvBooks_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            //if (dgvBooks.SelectedRows.Count > 0)
+            //{
+            //    int selectedrowindex = dgvBooks.SelectedCells[0].RowIndex;
+
+            //    DataGridViewRow selectedRow = dgvBooks.Rows[selectedrowindex];
+
+            //    if (Convert.ToString(selectedRow.Cells["Holder"].Value) == "Library")
+            //    {
+            //        btnLend.Enabled = true;
+            //        btnReturn.Enabled = false;
+            //    }
+            //    else {
+            //        btnLend.Enabled = false;
+            //        btnReturn.Enabled = true;
+            //    }
+            //}
+        }
+
+        private async void btnReturn_Click(object sender, EventArgs e)
+        {
+            if (dgvBooks.SelectedRows.Count > 0)
+            {
+                int selectedrowindex = dgvBooks.SelectedCells[0].RowIndex;
+
+                DataGridViewRow selectedRow = dgvBooks.Rows[selectedrowindex];
+
+                if (Convert.ToString(selectedRow.Cells["Holder"].Value) != "Library")
+                {
+                    FirebaseResponse res = await _client.GetAsync("students/");
+                    IDictionary<string, Student> studentList = res.ResultAs<IDictionary<string, Student>>();
+
+                    foreach (KeyValuePair<string, Student> bok in studentList)
+                    {
+                        if (bok.Value.index == Convert.ToString(selectedRow.Cells["Holder"].Value))
+                        {
+                            await _client.SetAsync("students/" + bok.Key + "/borrowed", "");
+                            break;
+                        }
+                    }
+
+
+                    FirebaseResponse result = await _client.GetAsync("books/");
+                    IDictionary<string, Book> bookList = result.ResultAs<IDictionary<string, Book>>();
+
+                    foreach (KeyValuePair<string, Book> bok in bookList)
+                    {
+                        if (bok.Value.refCode == (Convert.ToString(selectedRow.Cells["refCode"].Value)))
+                        {
+                            await _client.SetAsync("books/" + bok.Key + "/holder", "Library");
+                            break;
+                        }
+                    }
+
+                    MessageBox.Show("Book sucessfully lent.", "Sucess!", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                    btnRefresh_Click(sender, e);
+                }
+                else
+                {
+                    MessageBox.Show("Book is allready in library.", "Faliure", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            AboutForm aF = new AboutForm();
+            aF.ShowDialog();
+        }
+
         private void txtBookAuth_TextChanged(object sender, EventArgs e)
         {
             loadSelectedType();

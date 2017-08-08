@@ -10,5 +10,9 @@ namespace ACLibarary.Classes
     {
         public static string editStudent;
 
+        public static string lendBook;
+        public static string lendTitle;
+        public static string lendAuthor;
+
     }
 }

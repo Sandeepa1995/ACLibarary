@@ -34,7 +34,6 @@
             this.addNewStudentToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.newBookToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.newStudentToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.editToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.changeUserPasswordToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.btnCloseMain = new System.Windows.Forms.Button();
@@ -72,7 +71,7 @@
             this.txtStudentIndex = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.txtStudentName = new System.Windows.Forms.TextBox();
-            this.button3 = new System.Windows.Forms.Button();
+            this.btnAbout = new System.Windows.Forms.Button();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.btnRefresh = new System.Windows.Forms.Button();
             this.chkOther = new System.Windows.Forms.CheckBox();
@@ -106,7 +105,7 @@
             this.menuMain.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileToolStripMenuItem,
             this.editToolStripMenuItem});
-            this.menuMain.Location = new System.Drawing.Point(18, 12);
+            this.menuMain.Location = new System.Drawing.Point(18, 17);
             this.menuMain.Name = "menuMain";
             this.menuMain.Size = new System.Drawing.Size(126, 28);
             this.menuMain.TabIndex = 0;
@@ -115,8 +114,7 @@
             // fileToolStripMenuItem
             // 
             this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.addNewStudentToolStripMenuItem,
-            this.editToolStripMenuItem1});
+            this.addNewStudentToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
             this.fileToolStripMenuItem.Size = new System.Drawing.Size(44, 24);
             this.fileToolStripMenuItem.Text = "File";
@@ -126,31 +124,27 @@
             this.addNewStudentToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.newBookToolStripMenuItem,
             this.newStudentToolStripMenuItem});
+            this.addNewStudentToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("addNewStudentToolStripMenuItem.Image")));
             this.addNewStudentToolStripMenuItem.Name = "addNewStudentToolStripMenuItem";
-            this.addNewStudentToolStripMenuItem.Size = new System.Drawing.Size(116, 26);
+            this.addNewStudentToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
             this.addNewStudentToolStripMenuItem.Text = "Add ";
             this.addNewStudentToolStripMenuItem.Click += new System.EventHandler(this.addNewStudentToolStripMenuItem_Click);
             // 
             // newBookToolStripMenuItem
             // 
+            this.newBookToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("newBookToolStripMenuItem.Image")));
             this.newBookToolStripMenuItem.Name = "newBookToolStripMenuItem";
-            this.newBookToolStripMenuItem.Size = new System.Drawing.Size(169, 26);
+            this.newBookToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
             this.newBookToolStripMenuItem.Text = "New Book";
             this.newBookToolStripMenuItem.Click += new System.EventHandler(this.newBookToolStripMenuItem_Click);
             // 
             // newStudentToolStripMenuItem
             // 
+            this.newStudentToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("newStudentToolStripMenuItem.Image")));
             this.newStudentToolStripMenuItem.Name = "newStudentToolStripMenuItem";
-            this.newStudentToolStripMenuItem.Size = new System.Drawing.Size(169, 26);
+            this.newStudentToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
             this.newStudentToolStripMenuItem.Text = "New Student";
             this.newStudentToolStripMenuItem.Click += new System.EventHandler(this.newStudentToolStripMenuItem_Click);
-            // 
-            // editToolStripMenuItem1
-            // 
-            this.editToolStripMenuItem1.Name = "editToolStripMenuItem1";
-            this.editToolStripMenuItem1.Size = new System.Drawing.Size(116, 26);
-            this.editToolStripMenuItem1.Text = "Edit";
-            this.editToolStripMenuItem1.Click += new System.EventHandler(this.editToolStripMenuItem1_Click);
             // 
             // editToolStripMenuItem
             // 
@@ -252,11 +246,11 @@
             this.dgvBooks.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvBooks.Size = new System.Drawing.Size(759, 290);
             this.dgvBooks.TabIndex = 4;
+            this.dgvBooks.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvBooks_CellContentClick);
             // 
             // groupBox1
             // 
-            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox1.Controls.Add(this.txtSubject);
             this.groupBox1.Controls.Add(this.label7);
@@ -404,11 +398,10 @@
             // 
             // btnEditStudent
             // 
-            this.btnEditStudent.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnEditStudent.Location = new System.Drawing.Point(7, 396);
+            this.btnEditStudent.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnEditStudent.Location = new System.Drawing.Point(7, 409);
             this.btnEditStudent.Name = "btnEditStudent";
-            this.btnEditStudent.Size = new System.Drawing.Size(378, 47);
+            this.btnEditStudent.Size = new System.Drawing.Size(378, 34);
             this.btnEditStudent.TabIndex = 7;
             this.btnEditStudent.Text = "Edit Student";
             this.btnEditStudent.UseVisualStyleBackColor = true;
@@ -416,11 +409,10 @@
             // 
             // btnDeleteStudent
             // 
-            this.btnDeleteStudent.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnDeleteStudent.Location = new System.Drawing.Point(402, 396);
+            this.btnDeleteStudent.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnDeleteStudent.Location = new System.Drawing.Point(402, 409);
             this.btnDeleteStudent.Name = "btnDeleteStudent";
-            this.btnDeleteStudent.Size = new System.Drawing.Size(364, 47);
+            this.btnDeleteStudent.Size = new System.Drawing.Size(364, 34);
             this.btnDeleteStudent.TabIndex = 6;
             this.btnDeleteStudent.Text = "Delete Student";
             this.btnDeleteStudent.UseVisualStyleBackColor = true;
@@ -448,7 +440,7 @@
             this.dgvStudent.RowHeadersVisible = false;
             this.dgvStudent.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dgvStudent.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvStudent.Size = new System.Drawing.Size(759, 283);
+            this.dgvStudent.Size = new System.Drawing.Size(759, 296);
             this.dgvStudent.TabIndex = 5;
             this.dgvStudent.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.cb13_CellContentClick);
             // 
@@ -484,8 +476,7 @@
             // 
             // groupBox3
             // 
-            this.groupBox3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.groupBox3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox3.Controls.Add(this.groupBox4);
             this.groupBox3.Controls.Add(this.clbClass);
@@ -583,8 +574,6 @@
             // 
             // txtStudentIndex
             // 
-            this.txtStudentIndex.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.txtStudentIndex.Location = new System.Drawing.Point(80, 55);
             this.txtStudentIndex.Margin = new System.Windows.Forms.Padding(4);
             this.txtStudentIndex.Name = "txtStudentIndex";
@@ -606,8 +595,6 @@
             // 
             // txtStudentName
             // 
-            this.txtStudentName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.txtStudentName.Location = new System.Drawing.Point(80, 22);
             this.txtStudentName.Margin = new System.Windows.Forms.Padding(4);
             this.txtStudentName.Name = "txtStudentName";
@@ -615,18 +602,19 @@
             this.txtStudentName.TabIndex = 2;
             this.txtStudentName.TextChanged += new System.EventHandler(this.txtStudentName_TextChanged);
             // 
-            // button3
+            // btnAbout
             // 
-            this.button3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.button3.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button3.BackgroundImage")));
-            this.button3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button3.FlatAppearance.BorderSize = 0;
-            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button3.Location = new System.Drawing.Point(784, 529);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(25, 24);
-            this.button3.TabIndex = 4;
-            this.button3.UseVisualStyleBackColor = true;
+            this.btnAbout.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnAbout.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnAbout.BackgroundImage")));
+            this.btnAbout.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnAbout.FlatAppearance.BorderSize = 0;
+            this.btnAbout.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAbout.Location = new System.Drawing.Point(784, 529);
+            this.btnAbout.Name = "btnAbout";
+            this.btnAbout.Size = new System.Drawing.Size(25, 24);
+            this.btnAbout.TabIndex = 4;
+            this.btnAbout.UseVisualStyleBackColor = true;
+            this.btnAbout.Click += new System.EventHandler(this.button3_Click);
             // 
             // checkBox1
             // 
@@ -725,7 +713,7 @@
             // 
             // btnReturn
             // 
-            this.btnReturn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnReturn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnReturn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
             this.btnReturn.ForeColor = System.Drawing.Color.White;
             this.btnReturn.Location = new System.Drawing.Point(387, 409);
@@ -734,9 +722,11 @@
             this.btnReturn.TabIndex = 5;
             this.btnReturn.Text = "Return Book";
             this.btnReturn.UseVisualStyleBackColor = false;
+            this.btnReturn.Click += new System.EventHandler(this.btnReturn_Click);
             // 
             // btnLend
             // 
+            this.btnLend.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnLend.BackColor = System.Drawing.Color.Red;
             this.btnLend.ForeColor = System.Drawing.Color.White;
             this.btnLend.Location = new System.Drawing.Point(8, 409);
@@ -745,6 +735,7 @@
             this.btnLend.TabIndex = 6;
             this.btnLend.Text = "Lend Book";
             this.btnLend.UseVisualStyleBackColor = false;
+            this.btnLend.Click += new System.EventHandler(this.btnLend_Click);
             // 
             // MainForm
             // 
@@ -753,7 +744,7 @@
             this.ClientSize = new System.Drawing.Size(831, 568);
             this.Controls.Add(this.btnRefresh);
             this.Controls.Add(this.checkBox1);
-            this.Controls.Add(this.button3);
+            this.Controls.Add(this.btnAbout);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.btnMinimizeMain);
             this.Controls.Add(this.btnCloseMain);
@@ -812,14 +803,13 @@
         private System.Windows.Forms.TextBox txtStudentIndex;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox txtStudentName;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button btnAbout;
         private System.Windows.Forms.CheckBox chkMath;
         private System.Windows.Forms.CheckBox checkBox1;
         private System.Windows.Forms.CheckBox chkChem;
         private System.Windows.Forms.CheckBox chkPhysics;
         private System.Windows.Forms.ToolStripMenuItem newBookToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem newStudentToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem editToolStripMenuItem1;
         private System.Windows.Forms.Button btnEditStudent;
         private System.Windows.Forms.Button btnDeleteStudent;
         private System.Windows.Forms.CheckedListBox clbClass;
