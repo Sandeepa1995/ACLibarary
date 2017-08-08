@@ -269,6 +269,7 @@ namespace ACLibarary
             chkChem.Checked = true;
             chkMath.Checked = true;
             chkPhysics.Checked = true;
+            chkOther.Checked = true;
             LoadAllBooks();
             LoadAllStudents();
             dgvStudent.Rows.Clear();
@@ -279,14 +280,10 @@ namespace ACLibarary
                 clbClass.SetItemChecked(i, true);
         }
 
-        private void txtBookAuth_TextChanged(object sender, EventArgs e)
-        {
-            loadSelectedType();
-        }
-
-        private async void txtBookCode_TextChanged(object sender, EventArgs e)
+        private async void txtSubject_TextChanged(object sender, EventArgs e)
         {
             txtBookAuth.Text = "";
+            txtBookCode.Text = "";
             txtBookTitle.Text = "";
             chkMath.Checked = true;
             chkPhysics.Checked = true;
@@ -296,11 +293,49 @@ namespace ACLibarary
             dgvBooks.Rows.Clear();
             dgvBooks.Refresh();
 
-            foreach (KeyValuePair<string, Book> bok in bookList)
-            {           
-                if (bok.Value.refCode.ToLower().Contains(txtBookCode.Text.ToLower()))
+            if (bookList != null)
+            {
+                foreach (KeyValuePair<string, Book> bok in bookList)
                 {
-                    this.dgvBooks.Rows.Add(bok.Value.refCode, bok.Value.title, bok.Value.type, bok.Value.author, bok.Value.holder);
+                    if (bok.Value.subject.ToLower().Contains(txtSubject.Text.ToLower()))
+                    {
+                        this.dgvBooks.Rows.Add(bok.Value.refCode, bok.Value.title, bok.Value.stream, bok.Value.subject, bok.Value.type, bok.Value.author, bok.Value.holder);
+                    }
+                }
+            }
+        }
+
+        private void chkOther_CheckedChanged(object sender, EventArgs e)
+        {
+            loadSelectedType();
+        }
+
+        private void txtBookAuth_TextChanged(object sender, EventArgs e)
+        {
+            loadSelectedType();
+        }
+
+        private async void txtBookCode_TextChanged(object sender, EventArgs e)
+        {
+            txtBookAuth.Text = "";
+            txtSubject.Text = "";
+            txtBookTitle.Text = "";
+            chkMath.Checked = true;
+            chkPhysics.Checked = true;
+            chkChem.Checked = true;
+            FirebaseResponse res = await _client.GetAsync("books/");
+            IDictionary<string, Book> bookList = res.ResultAs<IDictionary<string, Book>>();
+            dgvBooks.Rows.Clear();
+            dgvBooks.Refresh();
+
+            if (bookList != null)
+            {
+                foreach (KeyValuePair<string, Book> bok in bookList)
+                {
+                    if (bok.Value.refCode.ToLower().Contains(txtBookCode.Text.ToLower()))
+                    {
+                        this.dgvBooks.Rows.Add(bok.Value.refCode, bok.Value.title, bok.Value.stream, bok.Value.subject, bok.Value.type, bok.Value.author, bok.Value.holder);
+                    }
                 }
             }
         }
@@ -321,7 +356,7 @@ namespace ACLibarary
                 foreach (KeyValuePair<string, Book> bok in bookList)
                 {
                     //MessageBox.Show(bok.Value.title);
-                    this.dgvBooks.Rows.Add(bok.Value.refCode, bok.Value.title, bok.Value.type, bok.Value.author, bok.Value.holder);
+                    this.dgvBooks.Rows.Add(bok.Value.refCode, bok.Value.title, bok.Value.stream, bok.Value.subject, bok.Value.type, bok.Value.author, bok.Value.holder);
                 }
             }
 
@@ -350,38 +385,49 @@ namespace ACLibarary
             dgvBooks.Rows.Clear();
             dgvBooks.Refresh();
 
+
+            //MessageBox.Show(txtBookAuth.Text, txtBookTitle.Text);
+
             foreach (KeyValuePair<string, Book> bok in bookList)
             {
                 if ((txtBookAuth.Text.Trim() == "") && (txtBookTitle.Text.Trim() == ""))
                 {
-                    if ((bok.Value.type == "Math") && (this.chkMath.Checked))
+                    if ((bok.Value.stream == "Math") && (this.chkMath.Checked))
                     {
-                        this.dgvBooks.Rows.Add(bok.Value.refCode, bok.Value.title, bok.Value.type, bok.Value.author, bok.Value.holder);
+                        this.dgvBooks.Rows.Add(bok.Value.refCode, bok.Value.title, bok.Value.stream, bok.Value.subject, bok.Value.type, bok.Value.author, bok.Value.holder);
                     }
-                    else if ((bok.Value.type == "Physics") && (this.chkPhysics.Checked))
+                    else if ((bok.Value.stream == "Physics") && (this.chkPhysics.Checked))
                     {
-                        this.dgvBooks.Rows.Add(bok.Value.refCode, bok.Value.title, bok.Value.type, bok.Value.author, bok.Value.holder);
+                        this.dgvBooks.Rows.Add(bok.Value.refCode, bok.Value.title, bok.Value.stream, bok.Value.subject, bok.Value.type, bok.Value.author, bok.Value.holder);
                     }
-                    else if ((bok.Value.type == "Chemistry") && (this.chkChem.Checked))
+                    else if ((bok.Value.stream == "Chemistry") && (this.chkChem.Checked))
                     {
-                        this.dgvBooks.Rows.Add(bok.Value.refCode, bok.Value.title, bok.Value.type, bok.Value.author, bok.Value.holder);
+                        this.dgvBooks.Rows.Add(bok.Value.refCode, bok.Value.title, bok.Value.stream, bok.Value.subject, bok.Value.type, bok.Value.author, bok.Value.holder);
+                    }
+                    else if ((bok.Value.stream == "Other") && (this.chkOther.Checked))
+                    {
+                        this.dgvBooks.Rows.Add(bok.Value.refCode, bok.Value.title, bok.Value.stream, bok.Value.subject, bok.Value.type, bok.Value.author, bok.Value.holder);
                     }
                 }
                 else if ((txtBookAuth.Text.Trim() == ""))
                 {
                     if (bok.Value.title.ToLower().Contains(txtBookTitle.Text.ToLower()))
                     {
-                        if ((bok.Value.type == "Math") && (this.chkMath.Checked))
+                        if ((bok.Value.stream == "Math") && (this.chkMath.Checked))
                         {
-                            this.dgvBooks.Rows.Add(bok.Value.refCode, bok.Value.title, bok.Value.type, bok.Value.author, bok.Value.holder);
+                            this.dgvBooks.Rows.Add(bok.Value.refCode, bok.Value.title, bok.Value.stream, bok.Value.subject, bok.Value.type, bok.Value.author, bok.Value.holder);
                         }
-                        else if ((bok.Value.type == "Physics") && (this.chkPhysics.Checked))
+                        else if ((bok.Value.stream == "Physics") && (this.chkPhysics.Checked))
                         {
-                            this.dgvBooks.Rows.Add(bok.Value.refCode, bok.Value.title, bok.Value.type, bok.Value.author, bok.Value.holder);
+                            this.dgvBooks.Rows.Add(bok.Value.refCode, bok.Value.title, bok.Value.stream, bok.Value.subject, bok.Value.type, bok.Value.author, bok.Value.holder);
                         }
-                        else if ((bok.Value.type == "Chemistry") && (this.chkChem.Checked))
+                        else if ((bok.Value.stream == "Chemistry") && (this.chkChem.Checked))
                         {
-                            this.dgvBooks.Rows.Add(bok.Value.refCode, bok.Value.title, bok.Value.type, bok.Value.author, bok.Value.holder);
+                            this.dgvBooks.Rows.Add(bok.Value.refCode, bok.Value.title, bok.Value.stream, bok.Value.subject, bok.Value.type, bok.Value.author, bok.Value.holder);
+                        }
+                        else if ((bok.Value.stream == "Other") && (this.chkOther.Checked))
+                        {
+                            this.dgvBooks.Rows.Add(bok.Value.refCode, bok.Value.title, bok.Value.stream, bok.Value.subject, bok.Value.type, bok.Value.author, bok.Value.holder);
                         }
                     }
                 }
@@ -389,17 +435,21 @@ namespace ACLibarary
                 {
                     if ((bok.Value.author.ToLower().Contains(txtBookAuth.Text.ToLower())))
                     {
-                        if ((bok.Value.type == "Math") && (this.chkMath.Checked))
+                        if ((bok.Value.stream == "Math") && (this.chkMath.Checked))
                         {
-                            this.dgvBooks.Rows.Add(bok.Value.refCode, bok.Value.title, bok.Value.type, bok.Value.author, bok.Value.holder);
+                            this.dgvBooks.Rows.Add(bok.Value.refCode, bok.Value.title, bok.Value.stream, bok.Value.subject, bok.Value.type, bok.Value.author, bok.Value.holder);
                         }
-                        else if ((bok.Value.type == "Physics") && (this.chkPhysics.Checked))
+                        else if ((bok.Value.stream == "Physics") && (this.chkPhysics.Checked))
                         {
-                            this.dgvBooks.Rows.Add(bok.Value.refCode, bok.Value.title, bok.Value.type, bok.Value.author, bok.Value.holder);
+                            this.dgvBooks.Rows.Add(bok.Value.refCode, bok.Value.title, bok.Value.stream, bok.Value.subject, bok.Value.type, bok.Value.author, bok.Value.holder);
                         }
-                        else if ((bok.Value.type == "Chemistry") && (this.chkChem.Checked))
+                        else if ((bok.Value.stream == "Chemistry") && (this.chkChem.Checked))
                         {
-                            this.dgvBooks.Rows.Add(bok.Value.refCode, bok.Value.title, bok.Value.type, bok.Value.author, bok.Value.holder);
+                            this.dgvBooks.Rows.Add(bok.Value.refCode, bok.Value.title, bok.Value.stream, bok.Value.subject, bok.Value.type, bok.Value.author, bok.Value.holder);
+                        }
+                        else if ((bok.Value.stream == "Other") && (this.chkOther.Checked))
+                        {
+                            this.dgvBooks.Rows.Add(bok.Value.refCode, bok.Value.title, bok.Value.stream, bok.Value.subject, bok.Value.type, bok.Value.author, bok.Value.holder);
                         }
                     }
                 }
@@ -407,17 +457,21 @@ namespace ACLibarary
                 {
                     if ((bok.Value.title.ToLower().Contains(txtBookTitle.Text.ToLower()))&&(bok.Value.author.ToLower().Contains(txtBookAuth.Text.ToLower())))
                     {
-                        if ((bok.Value.type == "Math") && (this.chkMath.Checked))
+                        if ((bok.Value.stream == "Math") && (this.chkMath.Checked))
                         {
-                            this.dgvBooks.Rows.Add(bok.Value.refCode, bok.Value.title, bok.Value.type, bok.Value.author, bok.Value.holder);
+                            this.dgvBooks.Rows.Add(bok.Value.refCode, bok.Value.title, bok.Value.stream, bok.Value.subject, bok.Value.type, bok.Value.author, bok.Value.holder);
                         }
-                        else if ((bok.Value.type == "Physics") && (this.chkPhysics.Checked))
+                        else if ((bok.Value.stream == "Physics") && (this.chkPhysics.Checked))
                         {
-                            this.dgvBooks.Rows.Add(bok.Value.refCode, bok.Value.title, bok.Value.type, bok.Value.author, bok.Value.holder);
+                            this.dgvBooks.Rows.Add(bok.Value.refCode, bok.Value.title, bok.Value.stream, bok.Value.subject, bok.Value.type, bok.Value.author, bok.Value.holder);
                         }
-                        else if ((bok.Value.type == "Chemistry") && (this.chkChem.Checked))
+                        else if ((bok.Value.stream == "Chemistry") && (this.chkChem.Checked))
                         {
-                            this.dgvBooks.Rows.Add(bok.Value.refCode, bok.Value.title, bok.Value.type, bok.Value.author, bok.Value.holder);
+                            this.dgvBooks.Rows.Add(bok.Value.refCode, bok.Value.title, bok.Value.stream, bok.Value.subject, bok.Value.type, bok.Value.author, bok.Value.holder);
+                        }
+                        else if ((bok.Value.stream == "Other") && (this.chkOther.Checked))
+                        {
+                            this.dgvBooks.Rows.Add(bok.Value.refCode, bok.Value.title, bok.Value.stream, bok.Value.subject, bok.Value.type, bok.Value.author, bok.Value.holder);
                         }
                     }
                 }
