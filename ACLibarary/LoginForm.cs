@@ -13,9 +13,10 @@ using System.Drawing;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
- 
+
 
 
 namespace ACLibarary
@@ -101,6 +102,7 @@ namespace ACLibarary
             //{
             try
             {
+                Thread.Sleep(200);
                 FirebaseResponse res = await _client.GetAsync("key");
                 IDictionary<string, string> reslt = res.ResultAs<IDictionary<string, string>>();
                 Encryption.ciphperString = Encryption.Decrypt(reslt["authSecret"],txtPass.Text);

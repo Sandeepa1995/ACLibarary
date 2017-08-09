@@ -80,6 +80,7 @@ namespace ACLibarary
 
         private async void cmbAuthor_SelectedIndexChanged(object sender, EventArgs e)
         {
+            Thread.Sleep(200);
             FirebaseResponse res = await _client.GetAsync("authors/"+cmbAuthor.Text);
             string auth = res.ResultAs<string>();
 
@@ -88,6 +89,7 @@ namespace ACLibarary
 
         private async void cmbAuthor_TextChanged(object sender, EventArgs e)
         {
+            Thread.Sleep(200);
             bool isMatch=false;
             FirebaseResponse res = await _client.GetAsync("authors/");
             IDictionary<string, string> authList = res.ResultAs<IDictionary<string, string>>();
@@ -233,6 +235,7 @@ namespace ACLibarary
             {
                 bool isMatch = false;
 
+                Thread.Sleep(200);
                 FirebaseResponse res;
 
                 if (rbAddMath.Checked)
@@ -372,6 +375,7 @@ namespace ACLibarary
 
         private async void cmbSubject_SelectedIndexChanged(object sender, EventArgs e)
         {
+            Thread.Sleep(200);
             FirebaseResponse res;
 
             if (rbAddMath.Checked)
@@ -398,12 +402,13 @@ namespace ACLibarary
 
         private void nUDAddQuan_ValueChanged(object sender, EventArgs e)
         {
-            Thread.Sleep(200);
+           
             checkToAdd();
         }
 
         public async void checkToAdd() {
             txtRef.Text = "";
+            Thread.Sleep(200);
             if ((txtAddTitle.Text != "") && (cmbAuthor.Text != "") && (cmbSubject.Text != ""))
             {
                 btnAddBook.Enabled = true;
@@ -463,6 +468,7 @@ namespace ACLibarary
 
         private async void AddBook_Load(object sender, EventArgs e)
         {
+            Thread.Sleep(200);
             FirebaseResponse res = await _client.GetAsync("authors/");
             IDictionary<string,string> authList = res.ResultAs<IDictionary<string, string>>();
 
@@ -482,6 +488,7 @@ namespace ACLibarary
 
         public async void checkSub() {
             cmbSubject.Text = "";
+            Thread.Sleep(200);
             if (rbAddMath.Checked)
             {
                 FirebaseResponse res1 = await _client.GetAsync("subjects/MAT");

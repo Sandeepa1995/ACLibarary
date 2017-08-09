@@ -10,6 +10,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -133,6 +134,7 @@ namespace ACLibarary
         private async void txtIndex_TextChanged(object sender, EventArgs e)
         {
             bool isExist = false;
+            Thread.Sleep(200);
             FirebaseResponse res = await _client.GetAsync("students/");
             IDictionary<string, Student> studentList = res.ResultAs<IDictionary<string, Student>>();
 
@@ -208,6 +210,7 @@ namespace ACLibarary
         }
         private async void EditStudentForm_Load(object sender, EventArgs e)
         {
+            Thread.Sleep(200);
             FirebaseResponse res = await _client.GetAsync("students/");
             IDictionary<string, Student> studentList = res.ResultAs<IDictionary<string, Student>>();
 
