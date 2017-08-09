@@ -9,6 +9,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -103,6 +104,7 @@ namespace ACLibarary
                 if (txtPassNew.Text == txtPassNewRe.Text)
                 {
                     string newAccess = Encryption.Encrypt(Encryption.ciphperString, txtPassNew.Text);
+                    Thread.Sleep(200);
                     await _client.SetAsync("key/authSecret",newAccess );
                     MessageBox.Show("Password changed sucessfully.", "Password Changed", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
                     this.Close();

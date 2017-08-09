@@ -10,6 +10,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -104,6 +105,7 @@ namespace ACLibarary
 
                 string lendStudent = (Convert.ToString(selectedRow.Cells["Index"].Value));
 
+                Thread.Sleep(200);
                 FirebaseResponse res = await _client.GetAsync("students/");
                 IDictionary<string, Student> studentList = res.ResultAs<IDictionary<string, Student>>();
                 
@@ -115,7 +117,7 @@ namespace ACLibarary
                     }
                 }
 
-
+                Thread.Sleep(200);
                 FirebaseResponse result = await _client.GetAsync("books/");
                 IDictionary<string, Book> bookList = result.ResultAs<IDictionary<string, Book>>();
 
@@ -180,6 +182,7 @@ namespace ACLibarary
 
         public async void LoadAllStudents()
         {
+            Thread.Sleep(200);
             FirebaseResponse res = await _client.GetAsync("students/");
             IDictionary<string, Student> studentList = res.ResultAs<IDictionary<string, Student>>();
             dgvStudent.Rows.Clear();
@@ -197,7 +200,7 @@ namespace ACLibarary
         public async void loadSelectedStudents()
         {
             txtStudentIndex.Text = "";
-
+            Thread.Sleep(200);
             FirebaseResponse res = await _client.GetAsync("students/");
             IDictionary<string, Student> studentList = res.ResultAs<IDictionary<string, Student>>();
             dgvStudent.Rows.Clear();

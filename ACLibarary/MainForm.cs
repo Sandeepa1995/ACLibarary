@@ -10,6 +10,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -172,6 +173,7 @@ namespace ACLibarary
             for (int i = 0; i < clbClass.Items.Count; i++)
                 clbClass.SetItemChecked(i, true);
 
+            Thread.Sleep(200);
             FirebaseResponse res = await _client.GetAsync("students/");
             IDictionary<string, Student> studentList = res.ResultAs<IDictionary<string, Student>>();
             dgvStudent.Rows.Clear();
@@ -235,7 +237,7 @@ namespace ACLibarary
 
                     string deleteStudent = (Convert.ToString(selectedRow.Cells["Index"].Value));
 
-
+                    Thread.Sleep(200);
                     FirebaseResponse res = await _client.GetAsync("students/");
                     IDictionary<string, Student> studentList = res.ResultAs<IDictionary<string, Student>>();
 
@@ -288,6 +290,7 @@ namespace ACLibarary
             chkMath.Checked = true;
             chkPhysics.Checked = true;
             chkChem.Checked = true;
+            Thread.Sleep(200);
             FirebaseResponse res = await _client.GetAsync("books/");
             IDictionary<string, Book> bookList = res.ResultAs<IDictionary<string, Book>>();
             dgvBooks.Rows.Clear();
@@ -362,7 +365,7 @@ namespace ACLibarary
                 int selectedrowindex = dgvBooks.SelectedCells[0].RowIndex;
 
                 DataGridViewRow selectedRow = dgvBooks.Rows[selectedrowindex];
-
+                Thread.Sleep(200);
                 if (Convert.ToString(selectedRow.Cells["Holder"].Value) != "Library")
                 {
                     FirebaseResponse res = await _client.GetAsync("students/");
@@ -420,6 +423,7 @@ namespace ACLibarary
             chkPhysics.Checked = true;
             chkChem.Checked = true;
             FirebaseResponse res = await _client.GetAsync("books/");
+            Thread.Sleep(200);
             IDictionary<string, Book> bookList = res.ResultAs<IDictionary<string, Book>>();
             dgvBooks.Rows.Clear();
             dgvBooks.Refresh();
@@ -444,6 +448,7 @@ namespace ACLibarary
         }
 
         public async void LoadAllBooks() {
+            Thread.Sleep(200);
             FirebaseResponse res = await _client.GetAsync("books/");
             IDictionary<string, Book> bookList = res.ResultAs<IDictionary<string, Book>>();
             if (bookList != null)
@@ -460,6 +465,7 @@ namespace ACLibarary
 
         public async void LoadAllStudents()
         {
+            Thread.Sleep(200);
             FirebaseResponse res = await _client.GetAsync("students/");
             IDictionary<string, Student> studentList = res.ResultAs<IDictionary<string, Student>>();
             dgvStudent.Rows.Clear();
@@ -475,6 +481,7 @@ namespace ACLibarary
         }
 
         public async void loadSelectedType() {
+            Thread.Sleep(200);
             txtBookCode.Text = "";
             FirebaseResponse res = await _client.GetAsync("books/");
             IDictionary<string, Book> bookList = res.ResultAs<IDictionary<string, Book>>();
@@ -575,6 +582,7 @@ namespace ACLibarary
         }
 
         public async void loadSelectedStudents() {
+            Thread.Sleep(200);
             txtStudentIndex.Text = "";
 
             FirebaseResponse res = await _client.GetAsync("students/");
